@@ -203,12 +203,6 @@ export const servicesContent = {
         icon: "Award",
       },
       {
-        title: "NABCB-Aligned Compliance Systems",
-        description:
-          "Our solutions are designed to meet the requirements of India's national accreditation body, ensuring domestic regulatory alignment.",
-        icon: "BadgeCheck",
-      },
-      {
         title: "Multidisciplinary Expert Networks",
         description:
           "Access to specialists across sectors and domains, bringing diverse perspectives to complex challenges.",
@@ -219,6 +213,24 @@ export const servicesContent = {
         description:
           "Clear, actionable deliverables with defined metrics enabling you to demonstrate progress and value.",
         icon: "BarChart3",
+      },
+      {
+        title: "End-to-End Project Management",
+        description:
+          "Comprehensive oversight from inception to completion, with clear milestones, timelines, and accountability frameworks.",
+        icon: "ClipboardCheck",
+      },
+      {
+        title: "Stakeholder Engagement & Communication",
+        description:
+          "Proactive engagement with all stakeholders ensuring alignment, buy-in, and seamless collaboration throughout the project lifecycle.",
+        icon: "MessageSquare",
+      },
+      {
+        title: "Continuous Improvement & Learning",
+        description:
+          "Iterative refinement based on feedback and lessons learned, ensuring solutions evolve with your organization's needs.",
+        icon: "RefreshCw",
       },
     ],
   },

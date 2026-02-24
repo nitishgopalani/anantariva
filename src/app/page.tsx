@@ -261,6 +261,44 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* Wide Range of Service Offerings Section */}
+      <Section variant="gradient">
+        <SectionHeader
+          subtitle={homeContent.serviceOfferings.subtitle}
+          title={homeContent.serviceOfferings.title}
+        />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {homeContent.serviceOfferings.categories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <Card className="h-full bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6">
+                  <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={category.icon} className="text-gold" size={28} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-navy text-center mb-4 pb-3 border-b border-gold/30">
+                    {category.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {category.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                        <span className="w-1.5 h-1.5 bg-gold rounded-full mt-1.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Start Your Sustainability Journey?"

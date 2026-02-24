@@ -64,7 +64,7 @@ export function ServicesPageClient() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-navy uppercase tracking-wider mb-3">
-                          Example Deliverables
+                          Offerings and Solutions
                         </h4>
                         <div className="grid sm:grid-cols-2 gap-3">
                           {industry.deliverables.map((deliverable) => (

@@ -138,4 +138,57 @@ export const homeContent = {
       icon: "Scale",
     },
   ],
+  serviceOfferings: {
+    title: "Our Wide Range of Service Offerings",
+    subtitle: "Comprehensive Solutions",
+    categories: [
+      {
+        title: "Corporate & Growth Strategy",
+        icon: "TrendingUp",
+        items: [
+          "Corporate & BU strategy",
+          "Purpose led strategy & long-term value",
+          "Business model reinvention",
+          "Portfolio strategy",
+          "New market entry opportunities",
+          "Digital Transformation",
+          "Go-to-market strategy",
+        ],
+      },
+      {
+        title: "Transaction Strategy & Execution",
+        icon: "Handshake",
+        items: [
+          "Integration strategy planning & execution",
+          "Divestiture strategy planning and execution",
+          "Value realization and tracking",
+          "Operational and IT separation & diligence",
+          "Commercial diligence (buy-side)",
+          "Vendor due diligence (sell-side)",
+        ],
+      },
+      {
+        title: "Supply Chain & Transformation",
+        icon: "Truck",
+        items: [
+          "Logistics Transformation",
+          "Supply Chain Planning and Transformation",
+          "Cost Optimization",
+          "Value Chain Diagnostic",
+          "Connected Commerce",
+        ],
+      },
+      {
+        title: "Customer Experience",
+        icon: "Heart",
+        items: [
+          "Customer Service Transformation",
+          "Customer & Growth Solutions",
+          "Direct to consumer",
+          "Commercial Transformation",
+          "Customer Engagement",
+        ],
+      },
+    ],
+  },
 };

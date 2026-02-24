@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { siteConfig, navigation } from "@/content";
@@ -133,8 +133,14 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button */}
+            {/* Search and CTA */}
             <div className="hidden lg:flex items-center space-x-3">
+              <button
+                className="p-2 text-gray-500 hover:text-navy hover:bg-gray-100 rounded-lg transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
               <Button variant="gold" asChild>
                 <Link href="/contact">{siteConfig.ctas.primary}</Link>
               </Button>

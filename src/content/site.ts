@@ -29,13 +29,12 @@ export const navigation = {
   main: [
     { name: "Home", href: "/" },
     {
-      name: "Company",
+      name: "Who We Are",
       href: "#",
       children: [
         { name: "About Us", href: "/about", description: "Our identity, mission, and values" },
         { name: "Our Team", href: "/about#experts", description: "Meet our expert network" },
         { name: "Our Presence", href: "/footprints", description: "Global reach, local expertise" },
-        { name: "Careers", href: "/careers", description: "Join our continuum" },
       ],
     },
     { name: "Services", href: "/services" },
@@ -51,6 +50,7 @@ export const navigation = {
       ],
     },
     { name: "Investors", href: "/investors" },
+    { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
   footer: {
