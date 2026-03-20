@@ -13,6 +13,7 @@ export function AboutPageClient() {
       <PageHeader
         title={aboutContent.hero.title}
         subtitle={aboutContent.hero.subtitle}
+        backgroundImage="/vision/vision.png"
       />
 
       {/* Identity Section */}
@@ -40,17 +41,17 @@ export function AboutPageClient() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100"
           >
-            <div className="aspect-square bg-gradient-to-br from-navy/5 to-gold/5 rounded-3xl flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="text-6xl md:text-8xl font-serif text-navy/10 mb-4">
-                  अनन्तर
-                </div>
-                <p className="text-navy font-medium">Anantara</p>
-                <p className="text-gray-500 text-sm">Endless Continuum</p>
-              </div>
-            </div>
+            <video
+              src="/video/istockphoto-1262727952-640_adpp_is.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-label="Our story"
+            />
           </motion.div>
         </div>
       </Section>
@@ -63,8 +64,16 @@ export function AboutPageClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full">
-              <CardContent className="p-8">
+            <Card className="h-full relative overflow-hidden">
+              {/* Full-size mission background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                aria-hidden
+                style={{
+                  backgroundImage: "url('/vision/mision.png')",
+                }}
+              />
+              <CardContent className="p-8 relative z-10">
                 <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6">
                   <Icon name="Target" className="text-navy" size={28} />
                 </div>
@@ -86,8 +95,16 @@ export function AboutPageClient() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <Card className="h-full">
-              <CardContent className="p-8">
+            <Card className="h-full relative overflow-hidden">
+              {/* Full-size purpose background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-15"
+                aria-hidden
+                style={{
+                  backgroundImage: "url('/vision/Our%20Purpose.png')",
+                }}
+              />
+              <CardContent className="p-8 relative z-10">
                 <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6">
                   <Icon name="Compass" className="text-gold" size={28} />
                 </div>
@@ -120,6 +137,7 @@ export function AboutPageClient() {
               title={value.title}
               description={value.description}
               icon={value.icon}
+              image={value.image}
               index={index}
               variant="bordered"
             />
@@ -128,12 +146,20 @@ export function AboutPageClient() {
       </Section>
 
       {/* Operating Principles */}
-      <Section variant="navy">
+      <Section variant="navy" className="relative">
         <SectionHeader
           subtitle="How We Work"
           title="Operating Principles"
           description="The standards that govern our professional conduct and ensure the integrity of our work."
           light
+        />
+        {/* Full-size background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          aria-hidden
+          style={{
+            backgroundImage: "url('/opration_princple/opration%20princple.png')",
+          }}
         />
         <div className="grid md:grid-cols-2 gap-6">
           {aboutContent.operatingPrinciples.map((principle, index) => (
@@ -225,10 +251,14 @@ export function AboutPageClient() {
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full overflow-hidden group hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-navy/10 rounded-full flex items-center justify-center">
-                    <Icon name="User" className="text-navy/40" size={40} />
-                  </div>
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={expert.image}
+                    alt={expert.sector}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <CardContent className="p-6">
                   <span className="text-xs font-medium text-gold uppercase tracking-wider">

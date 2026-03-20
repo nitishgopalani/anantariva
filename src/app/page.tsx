@@ -7,23 +7,34 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section, SectionHeader } from "@/components/layout";
 import { Icon, CTASection, FeatureCard } from "@/components/shared";
-import { homeContent, siteConfig } from "@/content";
+import { homeContent, siteConfig, aboutContent } from "@/content";
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-navy via-navy to-navy-light overflow-hidden">
-        {/* Background Elements */}
+      {/* Hero Section - full-bleed background video with content overlay */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Full-size background video */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald/5 via-transparent to-transparent" />
-          {/* Grid Pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
+          <video
+            src="/video/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Anantariva hero background"
+          />
+          {/* Dark overlay so text stays readable */}
+          <div className="absolute inset-0 bg-navy/75" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald/5 via-transparent to-transparent" aria-hidden />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
+            aria-hidden
           />
         </div>
 
@@ -106,14 +117,22 @@ export default function HomePage() {
           title={homeContent.startupAgility.title}
           description={homeContent.startupAgility.description}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {homeContent.startupAgility.features.map((feature, index) => (
             <FeatureCard
               key={feature.title}
               title={feature.title}
               description={feature.description}
+              image={feature.image}
               variant="bordered"
               index={index}
+              className={
+                index === 3
+                  ? "lg:col-span-4 lg:col-start-3"
+                  : index === 4
+                    ? "lg:col-span-4 lg:col-start-7"
+                    : "lg:col-span-4"
+              }
             />
           ))}
         </div>
@@ -153,18 +172,22 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative"
+            className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100"
           >
-            <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-50 rounded-3xl flex items-center justify-center">
-              <div className="w-3/4 h-3/4 bg-gradient-to-br from-navy/5 to-gold/5 rounded-full flex items-center justify-center">
-                <Icon name="Globe" size={120} className="text-navy/20" />
-              </div>
-            </div>
-            {/* Floating Elements */}
-            <div className="absolute top-10 right-10 w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center">
+            <video
+              src="/video/161343-823146723.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-label="Our global reach"
+            />
+            {/* Floating elements on top of video */}
+            <div className="absolute top-10 right-10 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg">
               <Icon name="Leaf" className="text-gold" size={28} />
             </div>
-            <div className="absolute bottom-10 left-10 w-16 h-16 bg-emerald/10 rounded-2xl flex items-center justify-center">
+            <div className="absolute bottom-10 left-10 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg">
               <Icon name="Shield" className="text-emerald" size={28} />
             </div>
           </motion.div>
@@ -172,7 +195,19 @@ export default function HomePage() {
       </Section>
 
       {/* Who We Are Section */}
-      <Section variant="navy">
+      <Section variant="navy" className="relative overflow-hidden">
+        <div className="absolute inset-0" aria-hidden>
+          <video
+            src="/video/istockphoto-1160868560-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy/70" />
+        </div>
+        <div className="relative z-10">
         <SectionHeader
           title={homeContent.whoWeAre.title}
           description={homeContent.whoWeAre.etymology}
@@ -195,6 +230,7 @@ export default function HomePage() {
             </motion.div>
           ))}
         </div>
+        </div>
       </Section>
 
       {/* Why Anantariva Section */}
@@ -210,9 +246,54 @@ export default function HomePage() {
               title={reason.title}
               description={reason.description}
               icon={reason.icon}
+              image={reason.image}
               variant="default"
               index={index}
             />
+          ))}
+        </div>
+      </Section>
+
+      {/* Our Expert Network Section */}
+      <Section variant="gray">
+        <SectionHeader
+          subtitle={aboutContent.experts.subtitle}
+          title={aboutContent.experts.title}
+          description={aboutContent.experts.description}
+        />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {aboutContent.experts.team.map((expert, index) => (
+            <motion.div
+              key={`${expert.sector}-${index}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={expert.image}
+                    alt={expert.sector}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <span className="text-xs font-medium text-gold uppercase tracking-wider">
+                    {expert.sector}
+                  </span>
+                  <h3 className="text-lg font-semibold text-navy mt-2 mb-1">
+                    {expert.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-3">{expert.role}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {expert.bio}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </Section>
@@ -236,13 +317,25 @@ export default function HomePage() {
               <Link href={service.href}>
                 <Card className="h-full hover:shadow-xl transition-all duration-300 group cursor-pointer hover:-translate-y-1">
                   <CardContent className="p-6 md:p-8">
-                    <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
-                      <Icon
-                        name={service.icon}
-                        className="text-navy group-hover:text-gold transition-colors"
-                        size={28}
-                      />
-                    </div>
+                    {service.image ? (
+                      <div className="w-full h-32 bg-navy/5 rounded-xl overflow-hidden mb-6 group-hover:bg-gold/10 transition-colors">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+                        <Icon
+                          name={service.icon}
+                          className="text-navy group-hover:text-gold transition-colors"
+                          size={28}
+                        />
+                      </div>
+                    )}
                     <h3 className="text-xl font-semibold text-navy mb-3 group-hover:text-gold transition-colors">
                       {service.title}
                     </h3>
@@ -261,13 +354,26 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Wide Range of Service Offerings Section */}
-      <Section variant="gradient">
+      {/* Section of Offerings — 4 columns (tracker) */}
+      <Section variant="gradient" id="section-of-offerings" className="relative overflow-hidden">
+        <div className="absolute inset-0" aria-hidden>
+          <video
+            src="/video/istockphoto-1407820720-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/80" />
+        </div>
+        <div className="relative z-10">
         <SectionHeader
           subtitle={homeContent.serviceOfferings.subtitle}
           title={homeContent.serviceOfferings.title}
+          description={homeContent.serviceOfferings.description}
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {homeContent.serviceOfferings.categories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -297,13 +403,14 @@ export default function HomePage() {
             </motion.div>
           ))}
         </div>
+        </div>
       </Section>
 
       {/* CTA Section */}
       <CTASection
         title="Ready to Start Your Sustainability Journey?"
         description="Partner with Anantariva for independent assurance, strategic guidance, and measurable impact aligned with global standards."
-        primaryButton={{ text: "Partner With Us", href: "/contact" }}
+        primaryButton={{ text: "Know More", href: "/contact" }}
         secondaryButton={{ text: "Explore Services", href: "/services" }}
       />
     </>

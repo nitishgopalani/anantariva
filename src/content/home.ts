@@ -3,7 +3,7 @@ export const homeContent = {
     headline: "Independent Assurance. Sustainable Strategy. Measurable Impact.",
     subtext:
       "In an era of regulatory complexity, climate urgency, and evolving responsible value chains, organizations need partners who combine global expertise with deep local insight. Anantariva delivers credible, science-based solutions with the agility of a focused consultancy and the rigor of established standards.",
-    primaryCta: "Partner With Us",
+    primaryCta: "Know More",
     secondaryCta: "Explore Services",
     backgroundAlt: "Abstract globe pattern representing global reach",
   },
@@ -16,22 +16,27 @@ export const homeContent = {
       {
         title: "Global Technical Insights",
         description: "Access to international standards, frameworks, and best practices across sectors",
+        image: "/img_of_Startup_Agility/img1_global_insights.png",
       },
       {
         title: "Cross-Sector Experience",
         description: "Deep expertise spanning agriculture, manufacturing, climate, and emerging technologies",
+        image: "/img_of_Startup_Agility/img2_cross_sector.png",
       },
       {
         title: "Regulatory Knowledge",
         description: "Comprehensive understanding of national and international compliance landscapes",
+        image: "/img_of_Startup_Agility/img3_regulatory.png",
       },
       {
         title: "Field Implementation",
         description: "Practical, ground-level experience turning strategy into measurable outcomes",
+        image: "/img_of_Startup_Agility/img4_field_implementation.png",
       },
       {
         title: "Policy Advisory",
         description: "Strategic guidance at the intersection of industry, government, and development",
+        image: "/img_of_Startup_Agility/img5_policy_advisory.png",
       },
     ],
   },
@@ -62,6 +67,7 @@ export const homeContent = {
       { name: "Project & Programme Advisory", icon: "Target" },
       { name: "Enterprise Solutions", icon: "Building2" },
       { name: "Research and Innovations", icon: "Microscope" },
+      { name: "Consultancy for Accreditation & Certification", icon: "FileCheck" },
     ],
   },
   whyAnantariva: {
@@ -72,31 +78,31 @@ export const homeContent = {
         title: "Independent & Impartial",
         description: "Free from conflicts of interest, delivering objective assessments you can trust",
         icon: "Scale",
+        image: "/Why_Anantariva/anantariva_1_independent.png",
       },
       {
         title: "Science-Based",
         description: "Grounded in rigorous research, data, and established methodologies",
         icon: "Microscope",
+        image: "/Why_Anantariva/anantariva_2_science.png",
       },
       {
         title: "ISO/IEC-Aligned",
         description: "Methodologies aligned with international standards for quality and consistency",
         icon: "Award",
-      },
-      {
-        title: "NABCB-Aligned",
-        description: "Solutions designed to meet national accreditation requirements",
-        icon: "BadgeCheck",
+        image: "/Why_Anantariva/anantariva_3_iso.png",
       },
       {
         title: "Risk-Based & Evidence-Driven",
         description: "Focused assessment approaches that prioritize what matters most",
         icon: "BarChart3",
+        image: "/Why_Anantariva/anantariva_4_risk.png",
       },
       {
         title: "Sustainability Outcomes",
         description: "Every engagement designed to deliver lasting, measurable environmental and social impact",
         icon: "Leaf",
+        image: "/Why_Anantariva/anantariva_5_sustainability.png",
       },
     ],
   },
@@ -106,41 +112,49 @@ export const homeContent = {
       description: "Independent verification and ongoing monitoring to ensure compliance and performance",
       href: "/services#assurance",
       icon: "Shield",
+      image: "/Our%20_Service_Offerings/service_1_assurance.png",
     },
     {
       title: "Certification Readiness",
       description: "End-to-end support for achieving and maintaining certifications across standards",
       href: "/services#certification",
       icon: "Award",
+      image: "/Our%20_Service_Offerings/service_2_certification.png",
     },
     {
       title: "M&E Solutions",
       description: "Robust monitoring and evaluation frameworks for development programs",
       href: "/services#me",
       icon: "BarChart3",
+      image: "/Our%20_Service_Offerings/service_3_me_solutions.png",
     },
     {
       title: "ESG & Climate Advisory",
       description: "Strategic guidance on ESG frameworks, carbon markets, and climate action",
       href: "/services#esg",
       icon: "Leaf",
+      image: "/Our%20_Service_Offerings/service_4_esg.png",
     },
     {
       title: "Digital & AI Governance",
       description: "Responsible AI frameworks and digital transformation compliance",
       href: "/services#digital",
       icon: "Cpu",
+      image: "/Our%20_Service_Offerings/service_5_ai_governance.png",
     },
     {
       title: "Policy & Strategic Advisory",
       description: "Expert counsel at the intersection of policy, regulation, and implementation",
       href: "/services#policy",
       icon: "Scale",
+      image: "/Our%20_Service_Offerings/service_6_policy.png",
     },
   ],
   serviceOfferings: {
     title: "Our Wide Range of Service Offerings",
-    subtitle: "Comprehensive Solutions",
+    subtitle: "Section of Offerings",
+    description:
+      "Four strategic pillars: Corporate & Growth Strategy, Transaction Strategy & Execution, Supply Chain & Transformation, and Customer Experience.",
     categories: [
       {
         title: "Corporate & Growth Strategy",

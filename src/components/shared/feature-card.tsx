@@ -8,6 +8,7 @@ interface FeatureCardProps {
   title: string;
   description: string;
   icon?: string;
+  image?: string;
   className?: string;
   variant?: "default" | "bordered" | "filled";
   index?: number;
@@ -17,6 +18,7 @@ export function FeatureCard({
   title,
   description,
   icon,
+  image,
   className,
   variant = "default",
   index = 0,
@@ -34,17 +36,28 @@ export function FeatureCard({
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className={cn(
-        "p-6 md:p-8 rounded-2xl transition-all duration-300 hover:shadow-lg group",
+        "rounded-xl transition-all duration-300 hover:shadow-lg group overflow-hidden",
+        image ? "p-6 md:p-7" : "p-7 md:p-8",
         variants[variant],
         className
       )}
     >
-      {icon && (
+      {image && (
+        <div className="relative w-[calc(100%+3rem)] md:w-[calc(100%+3.5rem)] h-32 md:h-36 -mx-6 md:-mx-7 -mt-6 md:-mt-7 mb-6 bg-gray-50 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      {!image && icon && (
         <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gold/10 transition-colors">
           <Icon name={icon} className="text-navy group-hover:text-gold transition-colors" size={24} />
         </div>
       )}
-      <h3 className="text-lg font-semibold text-navy mb-3">{title}</h3>
+      <h3 className="text-[15px] font-semibold text-navy mb-3">{title}</h3>
       <p className="text-gray-600 leading-relaxed text-sm">{description}</p>
     </motion.div>
   );

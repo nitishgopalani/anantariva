@@ -18,7 +18,7 @@ export const siteConfig = {
     twitter: "https://twitter.com/anantariva",
   },
   ctas: {
-    primary: "Partner With Us",
+    primary: "Know More",
     secondary: "Request Consultation",
     tertiary: "Reach Out",
     explore: "Explore Services",
@@ -29,7 +29,7 @@ export const navigation = {
   main: [
     { name: "Home", href: "/" },
     {
-      name: "Who We Are",
+      name: "Company",
       href: "#",
       children: [
         { name: "About Us", href: "/about", description: "Our identity, mission, and values" },
@@ -50,7 +50,6 @@ export const navigation = {
       ],
     },
     { name: "Investors", href: "/investors" },
-    { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
   footer: {

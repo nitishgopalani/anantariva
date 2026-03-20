@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "certification services",
     "compliance management",
     "ISO standards",
-    "NABCB",
     "environmental consulting",
     "climate advisory",
     "India consulting",

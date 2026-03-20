@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, Mail, MapPin, Briefcase, ExternalLink } from "lucide-react";
-import { PageHeader, Section, SectionHeader } from "@/components/layout";
+import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -53,11 +53,59 @@ export function CareersPageClient() {
 
   return (
     <>
-      <PageHeader
-        title={careersContent.hero.title}
-        subtitle={careersContent.hero.subtitle}
-        description={careersContent.hero.description}
-      />
+      {/* Hero with full-size video background */}
+      <section className="relative min-h-[50vh] flex items-center py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-1667456740-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Careers background"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/10 to-transparent opacity-80" aria-hidden />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {careersContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {careersContent.hero.subtitle}
+              </motion.span>
+            )}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+            >
+              {careersContent.hero.title}
+            </motion.h1>
+            {careersContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl"
+              >
+                {careersContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Who We Welcome */}
       <Section>

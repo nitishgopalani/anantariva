@@ -8,6 +8,7 @@ interface PageHeaderProps {
   subtitle?: string;
   description?: string;
   className?: string;
+  backgroundImage?: string;
 }
 
 export function PageHeader({
@@ -15,6 +16,7 @@ export function PageHeader({
   subtitle,
   description,
   className,
+  backgroundImage,
 }: PageHeaderProps) {
   return (
     <section
@@ -23,13 +25,22 @@ export function PageHeader({
         className
       )}
     >
+      {/* Optional full-bleed background image */}
+      {backgroundImage && (
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url("${backgroundImage}")` }}
+          aria-hidden
+        />
+      )}
+
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/20 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative">
+      <div className="container mx-auto px-4 lg:px-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

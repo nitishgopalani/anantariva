@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, ArrowRight } from "lucide-react";
-import { PageHeader, Section, SectionHeader } from "@/components/layout";
+import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Icon, FeatureCard } from "@/components/shared";
@@ -11,11 +11,59 @@ import { investorsContent } from "@/content";
 export function InvestorsPageClient() {
   return (
     <>
-      <PageHeader
-        title={investorsContent.hero.title}
-        subtitle={investorsContent.hero.subtitle}
-        description={investorsContent.hero.description}
-      />
+      {/* Hero with full-size video background */}
+      <section className="relative min-h-[50vh] flex items-center py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-1705765190-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Investors background"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/10 to-transparent opacity-80" aria-hidden />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {investorsContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {investorsContent.hero.subtitle}
+              </motion.span>
+            )}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+            >
+              {investorsContent.hero.title}
+            </motion.h1>
+            {investorsContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl"
+              >
+                {investorsContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Strategic Positioning */}
       <Section>
@@ -39,7 +87,19 @@ export function InvestorsPageClient() {
       </Section>
 
       {/* Investment Highlights */}
-      <Section variant="navy">
+      <Section variant="navy" className="relative overflow-hidden">
+        <div className="absolute inset-0" aria-hidden>
+          <video
+            src="/video/istockphoto-1017338764-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy/75" />
+        </div>
+        <div className="relative z-10">
         <SectionHeader
           subtitle={investorsContent.investmentHighlights.subtitle}
           title={investorsContent.investmentHighlights.title}
@@ -68,6 +128,7 @@ export function InvestorsPageClient() {
               </motion.div>
             )
           )}
+        </div>
         </div>
       </Section>
 

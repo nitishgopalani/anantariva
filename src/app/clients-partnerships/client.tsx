@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { PageHeader, Section, SectionHeader } from "@/components/layout";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Icon, CTASection } from "@/components/shared";
@@ -12,11 +12,59 @@ import { clientsContent } from "@/content";
 export function ClientsPageClient() {
   return (
     <>
-      <PageHeader
-        title={clientsContent.hero.title}
-        subtitle={clientsContent.hero.subtitle}
-        description={clientsContent.hero.description}
-      />
+      {/* Hero with full-size video background */}
+      <section className="relative min-h-[50vh] flex items-center py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-1472333975-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Partnerships background"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/10 to-transparent opacity-80" aria-hidden />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {clientsContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {clientsContent.hero.subtitle}
+              </motion.span>
+            )}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+            >
+              {clientsContent.hero.title}
+            </motion.h1>
+            {clientsContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl"
+              >
+                {clientsContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Introduction */}
       <Section>
@@ -51,8 +99,21 @@ export function ClientsPageClient() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-6 md:p-8">
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {partner.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={partner.image}
+                      alt={partner.title}
+                      className="w-full h-full object-cover opacity-80"
+                      loading="eager"
+                    />
+                    {/* Text readable rahe isliye image ke upar very light tint */}
+                    <div className="absolute inset-0 bg-white/20" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 md:p-8 relative z-10">
                   <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
                     <Icon
                       name={partner.icon}
@@ -112,31 +173,114 @@ export function ClientsPageClient() {
       </Section>
 
       {/* Client Logos Placeholder */}
-      <Section variant="gray">
-        <div className="text-center">
-          <span className="text-gold text-sm font-semibold uppercase tracking-wider mb-4 block">
-            Building Our Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            Trusted Partners Coming Soon
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-12">
-            As we establish our practice, we&apos;re actively building relationships
-            with organizations committed to sustainable transformation. Client
-            logos will be featured here as partnerships develop.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="aspect-[3/2] bg-white rounded-xl border border-gray-200 flex items-center justify-center"
-              >
-                <div className="text-gray-300 text-sm font-medium">
-                  Partner Logo
+      <Section
+        variant="gray"
+        className="relative overflow-hidden"
+        containerClassName="max-w-none w-full px-0"
+      >
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-1360047233-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Trusted partners background"
+          />
+          <div className="absolute inset-0 bg-navy/60" aria-hidden />
+        </div>
+
+        <div className="text-center relative z-10 px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <span className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4 block">
+              Building Our Portfolio
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Trusted Partners Coming Soon
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto mb-12">
+              As we establish our practice, we&apos;re actively building relationships
+              with organizations committed to sustainable transformation. Client
+              logos will be featured here as partnerships develop.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-[3/2] bg-white rounded-xl border border-gray-200 flex items-center justify-center"
+                >
+                  <div className="text-white/70 text-sm font-medium">
+                    Partner Logo
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Partnership Links */}
+      <Section>
+        <SectionHeader
+          subtitle={clientsContent.partnershipLinks.subtitle}
+          title={clientsContent.partnershipLinks.title}
+          description={clientsContent.partnershipLinks.description}
+        />
+        <div className="grid lg:grid-cols-2 gap-6">
+          <Card className="h-full">
+            <CardContent className="p-6 md:p-8">
+              <h3 className="text-xl font-semibold text-navy mb-5 pb-3 border-b border-gold/30">
+                ESG Platform Linkage
+              </h3>
+              <div className="space-y-4">
+                {clientsContent.partnershipLinks.esgPlatforms.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 rounded-xl border border-gray-200 hover:border-gold hover:shadow-sm transition-all"
+                  >
+                    <span className="inline-flex items-center gap-2 text-navy font-medium">
+                      {item.name}
+                      <ExternalLink className="h-4 w-4" />
+                    </span>
+                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="h-full">
+            <CardContent className="p-6 md:p-8">
+              <h3 className="text-xl font-semibold text-navy mb-5 pb-3 border-b border-gold/30">
+                ISO Repository Links
+              </h3>
+              <div className="space-y-4">
+                {clientsContent.partnershipLinks.isoRepositories.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 rounded-xl border border-gray-200 hover:border-gold hover:shadow-sm transition-all"
+                  >
+                    <span className="inline-flex items-center gap-2 text-navy font-medium">
+                      {item.name}
+                      <ExternalLink className="h-4 w-4" />
+                    </span>
+                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </Section>
 
