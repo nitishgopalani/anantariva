@@ -84,7 +84,20 @@ export function ServicesPageClient() {
                 <CardContent className="p-0">
                   <div className="grid lg:grid-cols-3 gap-0">
                     {/* Header Area — matches home navy hero accents */}
-                    <div className="bg-gradient-to-br from-navy to-navy-light p-6 md:p-8 lg:p-10 text-white lg:rounded-l-2xl">
+                    <div className="relative bg-gradient-to-br from-navy to-navy-light p-6 md:p-8 lg:p-10 text-white lg:rounded-l-2xl overflow-hidden">
+                      {industry.image && (
+                        <div className="absolute inset-0 z-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={industry.image}
+                            alt={industry.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-navy/65" aria-hidden />
+                        </div>
+                      )}
+                      <div className="relative z-10">
                       <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6">
                         <Icon name={industry.icon} className="text-gold" size={28} />
                       </div>
@@ -97,6 +110,7 @@ export function ServicesPageClient() {
                       <p className="text-gray-300 text-sm leading-relaxed">
                         {industry.focus}
                       </p>
+                      </div>
                     </div>
 
                     {/* Content Area — same padding rhythm as home Service Highlights */}

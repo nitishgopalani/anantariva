@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Icon, FeatureCard, CTASection } from "@/components/shared";
+import { Icon, CTASection } from "@/components/shared";
 import { careersContent } from "@/content";
 
 const applicationSchema = z.object({
@@ -122,19 +122,34 @@ export function CareersPageClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="bg-gray-50 rounded-xl p-5 text-center hover:bg-gray-100 transition-colors group"
             >
-              <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/10 transition-colors">
-                <Icon
-                  name={role.icon}
-                  className="text-navy group-hover:text-gold transition-colors"
-                  size={24}
-                />
-              </div>
-              <h3 className="text-sm font-semibold text-navy mb-1">
-                {role.title}
-              </h3>
-              <p className="text-xs text-gray-500">{role.description}</p>
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {role.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={role.image}
+                      alt={role.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-navy/60" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-5 text-center relative z-10">
+                  <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
+                    <Icon
+                      name={role.icon}
+                      className="text-white group-hover:text-gold transition-colors"
+                      size={24}
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-white mb-1">
+                    {role.title}
+                  </h3>
+                  <p className="text-xs text-white/90">{role.description}</p>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -148,14 +163,43 @@ export function CareersPageClient() {
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {careersContent.whyWorkWithUs.benefits.map((benefit, index) => (
-            <FeatureCard
+            <motion.div
               key={benefit.title}
-              title={benefit.title}
-              description={benefit.description}
-              icon={benefit.icon}
-              index={index}
-              variant="bordered"
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {benefit.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={benefit.image}
+                      alt={benefit.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-navy/58" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 md:p-8 relative z-10">
+                  <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
+                    <Icon
+                      name={benefit.icon}
+                      className="text-white group-hover:text-gold transition-colors"
+                      size={24}
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-white/90 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </Section>
@@ -176,20 +220,34 @@ export function CareersPageClient() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <Briefcase className="text-navy h-6 w-6" />
-                    <Badge variant="secondary">{opening.type}</Badge>
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {opening.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={opening.image}
+                      alt={opening.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-navy/60" aria-hidden />
                   </div>
-                  <h3 className="text-lg font-semibold text-navy mb-2">
+                )}
+                <CardContent className="p-6 relative z-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <Briefcase className="text-white h-6 w-6" />
+                    <Badge className="bg-white/15 text-white border border-white/25 hover:bg-white/20">
+                      {opening.type}
+                    </Badge>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     {opening.title}
                   </h3>
-                  <div className="flex items-center gap-1 text-sm text-gray-500 mb-4">
+                  <div className="flex items-center gap-1 text-sm text-white/85 mb-4">
                     <MapPin className="h-4 w-4" />
                     {opening.location}
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-white/90 leading-relaxed">
                     {opening.description}
                   </p>
                 </CardContent>

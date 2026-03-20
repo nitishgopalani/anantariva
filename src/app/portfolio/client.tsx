@@ -100,7 +100,20 @@ export function PortfolioPageClient() {
               transition={{ delay: index * 0.1 }}
             >
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div className="relative aspect-video bg-gradient-to-br from-navy/10 to-gold/10">
+                <div className="relative aspect-video overflow-hidden">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    aria-label={item.title}
+                  >
+                    <source src={item.thumbnail} type="video/mp4" />
+                    <source src={item.thumbnail.replace(/\.mp4$/i, ".m4b")} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-navy/25" aria-hidden />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
                       <Play className="h-8 w-8 text-navy ml-1" />
@@ -181,7 +194,20 @@ export function PortfolioPageClient() {
               transition={{ delay: index * 0.05 }}
             >
               <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group cursor-pointer">
-                <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-50">
+                <div className="relative aspect-video overflow-hidden">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    aria-label={item.title}
+                  >
+                    <source src={item.thumbnail} type="video/mp4" />
+                    <source src={item.thumbnail.replace(/\.mp4$/i, ".m4b")} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-navy/20" aria-hidden />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow group-hover:scale-110 transition-transform">
                       <Play className="h-6 w-6 text-navy ml-0.5" />
@@ -230,19 +256,31 @@ export function PortfolioPageClient() {
       </Section>
 
       {/* Video Player Notice */}
-      <Section variant="gray">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Play className="h-8 w-8 text-navy" />
+      <Section variant="gray" className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/video/Portfolio/istockphoto-1624779787-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Portfolio video library background"
+          />
+          <div className="absolute inset-0 bg-navy/65" aria-hidden />
+        </div>
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Play className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Video Library Coming Soon
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-200 mb-6">
             Our video portfolio is being prepared for online viewing. Contact us
             for access to specific project documentation or case study videos.
           </p>
-          <p className="text-sm text-gray-500 bg-gold/10 border border-gold/20 rounded-lg p-4">
+          <p className="text-sm text-white/90 bg-white/10 border border-white/20 rounded-lg p-4">
             {portfolioContent.videoPlayer.note}
           </p>
         </div>

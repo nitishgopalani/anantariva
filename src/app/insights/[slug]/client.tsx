@@ -22,8 +22,20 @@ export function InsightDetailClient({
   return (
     <>
       {/* Article Header */}
-      <section className="bg-gradient-to-br from-navy to-navy-light text-white py-16 md:py-24">
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <section className="relative bg-gradient-to-br from-navy to-navy-light text-white py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/video/Navigating%20India%27s%20Evolving%20ESG%20Disclosure%20Landscape.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label={`${post.title} background video`}
+          />
+          <div className="absolute inset-0 bg-navy/72" aria-hidden />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -155,8 +167,20 @@ export function InsightDetailClient({
                 transition={{ delay: index * 0.1 }}
               >
                 <Link href={`/insights/${relatedPost.slug}`}>
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 group">
-                    <CardContent className="p-6">
+                  <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                    {(relatedPost.relatedImage || relatedPost.image) && (
+                      <div className="absolute inset-0 z-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={relatedPost.relatedImage || relatedPost.image}
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-white/72" aria-hidden />
+                      </div>
+                    )}
+                    <CardContent className="p-6 relative z-10">
                       <Badge variant="secondary" className="mb-3">
                         {relatedPost.category}
                       </Badge>

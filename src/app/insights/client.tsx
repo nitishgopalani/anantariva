@@ -93,14 +93,17 @@ export function InsightsPageClient() {
           <Link href={`/insights/${featuredPost.slug}`}>
             <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="aspect-[16/10] lg:aspect-auto bg-gradient-to-br from-navy/10 to-gold/10 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <Badge variant="gold" className="mb-4">
-                      Featured
-                    </Badge>
-                    <div className="w-20 h-20 bg-navy/10 rounded-2xl mx-auto flex items-center justify-center">
-                      <span className="text-4xl font-serif text-navy/30">A</span>
-                    </div>
+                <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Navigating%20India's/istockphoto-685936068-1024x1024.jpg"
+                    alt={featuredPost.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-navy/20" aria-hidden />
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="gold">Featured</Badge>
                   </div>
                 </div>
                 <CardContent className="p-8 lg:p-10 flex flex-col justify-center">
@@ -168,10 +171,14 @@ export function InsightsPageClient() {
             >
               <Link href={`/insights/${post.slug}`}>
                 <Card className="h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-navy/10 rounded-xl flex items-center justify-center">
-                      <span className="text-2xl font-serif text-navy/30">A</span>
-                    </div>
+                  <div className="aspect-[16/10] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
                   </div>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-3">
@@ -213,8 +220,20 @@ export function InsightsPageClient() {
       </Section>
 
       {/* Newsletter CTA */}
-      <Section variant="gray">
-        <div className="max-w-2xl mx-auto text-center">
+      <Section variant="gray" className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/Insights/Stay%20Informed.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Stay informed background video"
+          />
+          <div className="absolute inset-0 bg-white/75" aria-hidden />
+        </div>
+        <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
             Stay Informed
           </h2>

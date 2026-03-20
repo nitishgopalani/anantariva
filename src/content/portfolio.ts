@@ -45,7 +45,7 @@ export const portfolioContent = {
       description:
         "Documentary exploring the journey of certified sustainable produce from smallholder farms to international markets.",
       category: "Project Documentaries" as PortfolioCategory,
-      thumbnail: "/images/portfolio/agriculture-documentary.jpg",
+      thumbnail: "/video/Portfolio/Sustainable%20Agriculture%20Field%20to%20Market.mp4",
       duration: "12:30",
       featured: true,
       publishedAt: "2024-01",
@@ -57,7 +57,7 @@ export const portfolioContent = {
       description:
         "Case study video documenting a manufacturing company's ESG transformation journey over 18 months.",
       category: "Case Studies" as PortfolioCategory,
-      thumbnail: "/images/portfolio/esg-case-study.jpg",
+      thumbnail: "/video/Portfolio/ESG%20Transformation%20A%20Corporate%20Journey.mp4",
       duration: "8:45",
       featured: true,
       publishedAt: "2024-01",
@@ -69,7 +69,7 @@ export const portfolioContent = {
       description:
         "Interview with climate advisory specialists on the evolving carbon market landscape and opportunities.",
       category: "Expert Interviews" as PortfolioCategory,
-      thumbnail: "/images/portfolio/carbon-interview.jpg",
+      thumbnail: "/video/Portfolio/Expert%20Insights%20The%20Future%20of%20Carbon%20Markets.mp4",
       duration: "15:20",
       featured: false,
       publishedAt: "2024-01",
@@ -81,7 +81,7 @@ export const portfolioContent = {
       description:
         "Recorded webinar providing practical guidance on Business Responsibility and Sustainability Reporting compliance.",
       category: "Webinars" as PortfolioCategory,
-      thumbnail: "/images/portfolio/brsr-webinar.jpg",
+      thumbnail: "/video/Portfolio/Webinar%20BRSR%20Reporting%20Essentials.mp4",
       duration: "45:00",
       featured: true,
       publishedAt: "2023-12",
@@ -93,7 +93,7 @@ export const portfolioContent = {
       description:
         "Industry panel discussion on the role of certification standards in transforming agricultural supply chains.",
       category: "Panel Discussions" as PortfolioCategory,
-      thumbnail: "/images/portfolio/agriculture-panel.jpg",
+      thumbnail: "/video/Portfolio/Panel%20Sustainability%20Standards%20in%20Agriculture.mp4",
       duration: "52:15",
       featured: false,
       publishedAt: "2023-12",
@@ -105,7 +105,7 @@ export const portfolioContent = {
       description:
         "Educational video explaining Scope 3 emissions categories and practical approaches to measurement.",
       category: "Explainers" as PortfolioCategory,
-      thumbnail: "/images/portfolio/scope3-explainer.jpg",
+      thumbnail: "/video/Portfolio/Explainer%20Understanding%20Scope%203%20Emissions.mp4",
       duration: "6:30",
       featured: false,
       publishedAt: "2024-01",
@@ -117,7 +117,7 @@ export const portfolioContent = {
       description:
         "Demonstration of AI-enabled compliance management platform features and capabilities.",
       category: "Platform Demos" as PortfolioCategory,
-      thumbnail: "/images/portfolio/platform-demo.jpg",
+      thumbnail: "/video/Portfolio/Platform%20Demo%20Compliance%20Management%20System.mp4",
       duration: "10:15",
       featured: false,
       publishedAt: "2024-01",
@@ -129,7 +129,7 @@ export const portfolioContent = {
       description:
         "Highlights from our internal auditor training program for management system certifications.",
       category: "Training" as PortfolioCategory,
-      thumbnail: "/images/portfolio/training-highlight.jpg",
+      thumbnail: "/video/Portfolio/Training%20Highlight%20Internal%20Auditor%20Program.mp4",
       duration: "4:45",
       featured: false,
       publishedAt: "2023-12",

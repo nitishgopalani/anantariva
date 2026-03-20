@@ -5,7 +5,7 @@ import { Mail, ArrowRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Icon, FeatureCard } from "@/components/shared";
+import { Icon } from "@/components/shared";
 import { investorsContent } from "@/content";
 
 export function InvestorsPageClient() {
@@ -74,14 +74,43 @@ export function InvestorsPageClient() {
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {investorsContent.positioning.domains.map((domain, index) => (
-            <FeatureCard
+            <motion.div
               key={domain.title}
-              title={domain.title}
-              description={domain.description}
-              icon={domain.icon}
-              index={index}
-              variant="bordered"
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {domain.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={domain.image}
+                      alt={domain.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-navy/48" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 md:p-8 relative z-10">
+                  <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
+                    <Icon
+                      name={domain.icon}
+                      className="text-white group-hover:text-gold transition-colors"
+                      size={24}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {domain.title}
+                  </h3>
+                  <p className="text-white/90 leading-relaxed">
+                    {domain.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </Section>

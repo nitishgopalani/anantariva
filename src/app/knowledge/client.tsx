@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Download, FileText, Filter } from "lucide-react";
-import { PageHeader, Section } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -32,11 +32,59 @@ export function KnowledgePageClient() {
 
   return (
     <>
-      <PageHeader
-        title={knowledgeContent.hero.title}
-        subtitle={knowledgeContent.hero.subtitle}
-        description={knowledgeContent.hero.description}
-      />
+      <section className="relative bg-navy text-white py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/video/istockphoto-1455157631-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Knowledge repository background video"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+        </div>
+
+        <div className="absolute inset-0 opacity-10 z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/20 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+            >
+              {knowledgeContent.hero.subtitle}
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            >
+              {knowledgeContent.hero.title}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl"
+            >
+              {knowledgeContent.hero.description}
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Featured Resources */}
       <Section className="pb-8 md:pb-12">
@@ -52,28 +100,40 @@ export function KnowledgePageClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 group border-gold/20 bg-gradient-to-br from-gold/5 to-transparent">
-                <CardContent className="p-6">
+              <Card className="h-full hover:shadow-xl transition-all duration-300 group border-gold/20 relative overflow-hidden">
+                {resource.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={resource.image}
+                      alt={resource.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-navy/55" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center">
-                      <FileText className="text-gold h-6 w-6" />
+                    <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center">
+                      <FileText className="text-white h-6 w-6" />
                     </div>
                     <Badge variant="gold">{resource.format}</Badge>
                   </div>
-                  <Badge variant="outline" className="mb-3">
+                  <Badge variant="outline" className="mb-3 border-white/40 text-white">
                     {resource.category}
                   </Badge>
-                  <h3 className="text-lg font-semibold text-navy mb-2 group-hover:text-gold transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors">
                     {resource.title}
                   </h3>
-                  <p className="text-sm text-gray-600 line-clamp-3 mb-4">
+                  <p className="text-sm text-white/90 line-clamp-3 mb-4">
                     {resource.description}
                   </p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {resource.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600"
+                        className="px-2 py-1 bg-white/15 rounded text-xs text-white/90"
                       >
                         {tag}
                       </span>
@@ -82,7 +142,7 @@ export function KnowledgePageClient() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full group-hover:bg-gold group-hover:text-white group-hover:border-gold transition-colors"
+                    className="w-full border-white/50 text-white hover:bg-gold hover:text-white hover:border-gold transition-colors"
                     disabled
                   >
                     <Download className="mr-2 h-4 w-4" />
@@ -145,8 +205,20 @@ export function KnowledgePageClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 group">
-                <CardContent className="p-6">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+                {resource.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={resource.image}
+                      alt={resource.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-white/65" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 relative z-10">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center group-hover:bg-gold/10 transition-colors">
                       <FileText className="text-navy group-hover:text-gold h-5 w-5 transition-colors" />
@@ -200,8 +272,20 @@ export function KnowledgePageClient() {
       </Section>
 
       {/* Gated Download Notice */}
-      <Section variant="gray">
-        <div className="max-w-2xl mx-auto text-center">
+      <Section variant="gray" className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/Knowledge%20Repository/Access%20Our%20Resources.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Access resources background video"
+          />
+          <div className="absolute inset-0 bg-white/75" aria-hidden />
+        </div>
+        <div className="max-w-2xl mx-auto text-center relative z-10">
           <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <Download className="h-8 w-8 text-navy" />
           </div>

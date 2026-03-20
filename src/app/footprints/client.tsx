@@ -263,8 +263,22 @@ export function FootprintsPageClient() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-navy via-navy to-navy-light rounded-3xl p-8 md:p-12 lg:p-16 text-center"
+          className="relative overflow-hidden rounded-3xl p-8 md:p-12 lg:p-16 text-center"
         >
+          <div className="absolute inset-0 z-0" aria-hidden>
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            >
+              <source src="/video/Work%20With%20Us%20Globally.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-navy/70" />
+          </div>
+          <div className="relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {footprintsContent.cta.title}
           </h2>
@@ -286,6 +300,7 @@ export function FootprintsPageClient() {
             >
               <Link href="/services">{footprintsContent.cta.secondaryButton}</Link>
             </Button>
+          </div>
           </div>
         </motion.div>
       </Section>

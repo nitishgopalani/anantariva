@@ -17,6 +17,7 @@ export const newsroomContent = {
           excerpt:
             "New firm brings together expert network for sustainability, assurance, and advisory services across India and beyond.",
           type: "press-release",
+          image: "/Newsroom/t01_launch_consulting.png",
         },
         {
           title: "Expanding Advisory Services in Climate and ESG",
@@ -24,6 +25,7 @@ export const newsroomContent = {
           excerpt:
             "Anantariva to launch specialized climate advisory and ESG transformation practice.",
           type: "press-release",
+          image: "/Newsroom/t02_expanding_climate.png",
         },
       ],
     },
@@ -38,6 +40,7 @@ export const newsroomContent = {
           excerpt:
             "Breaking down the latest requirements and implementation guidance for listed companies.",
           type: "regulatory",
+          image: "/Newsroom/t03_sebi_brsr.png",
         },
         {
           title: "Evolving Sustainability Reporting Standards in India",
@@ -45,6 +48,7 @@ export const newsroomContent = {
           excerpt:
             "Overview of the changing landscape and implications for compliance-focused organizations.",
           type: "regulatory",
+          image: "/Newsroom/t04_sustainability_reporting.png",
         },
       ],
     },
@@ -59,6 +63,7 @@ export const newsroomContent = {
           excerpt:
             "Examining key policy initiatives driving sustainable transformation across sectors.",
           type: "policy",
+          image: "/Newsroom/t05_green_transition.png",
         },
         {
           title: "Carbon Markets in India: Opportunities and Challenges",
@@ -66,6 +71,7 @@ export const newsroomContent = {
           excerpt:
             "Understanding the emerging carbon credit ecosystem and its implications for business.",
           type: "policy",
+          image: "/Newsroom/t06_carbon_markets.png",
         },
       ],
     },
@@ -80,6 +86,7 @@ export const newsroomContent = {
           excerpt:
             "Summary of revisions and new requirements in key ISO standards affecting Indian organizations.",
           type: "certification",
+          image: "/Newsroom/t07_iso_standards.png",
         },
         {
           title: "Sustainability Certification Trends in Agriculture",
@@ -87,6 +94,7 @@ export const newsroomContent = {
           excerpt:
             "Market dynamics and emerging standards shaping certification pathways for agricultural producers.",
           type: "certification",
+          image: "/Newsroom/t08_agri_certification_trends.png",
         },
       ],
     },
@@ -101,6 +109,7 @@ export const newsroomContent = {
           excerpt:
             "Anantariva experts sharing insights at industry conferences and forums.",
           type: "event",
+          image: "/Newsroom/t09_speaking_engagements.png",
         },
         {
           title: "Webinar Series: Sustainability Essentials",
@@ -108,6 +117,7 @@ export const newsroomContent = {
           excerpt:
             "Join our expert-led sessions on key topics in sustainability and compliance.",
           type: "event",
+          image: "/Newsroom/t10_webinar_series.png",
         },
       ],
     },
@@ -122,6 +132,7 @@ export const newsroomContent = {
           excerpt:
             "Our commitment to quality and impact as we establish our practice and reputation.",
           type: "recognition",
+          image: "/Newsroom/t11_foundation_excellence.png",
         },
       ],
     },
