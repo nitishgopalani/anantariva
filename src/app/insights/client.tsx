@@ -92,15 +92,25 @@ export function InsightsPageClient() {
         >
           <Link href={`/insights/${featuredPost.slug}`}>
             <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-              <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-0 lg:items-stretch">
+                <div className="relative min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] lg:h-full overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/Navigating%20India's/istockphoto-685936068-1024x1024.jpg"
-                    alt={featuredPost.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                  />
+                  <picture className="absolute inset-0 block h-full w-full">
+                    <source
+                      srcSet="/Navigating%20India%27s/istockphoto-685936068-1024x1024.jpg"
+                      type="image/jpeg"
+                    />
+                    <source
+                      srcSet="/Navigating%20India%27s/istockphoto-685936068-1024x1024.png"
+                      type="image/png"
+                    />
+                    <img
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      className="absolute inset-0 h-full w-full min-h-full object-cover object-center"
+                      loading="eager"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-navy/20" aria-hidden />
                   <div className="absolute top-4 left-4">
                     <Badge variant="gold">Featured</Badge>

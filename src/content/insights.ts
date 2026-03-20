@@ -48,7 +48,7 @@ export const insightsContent = {
       },
       publishedAt: "2024-01-15",
       readingTime: "8 min read",
-      image: "/Navigating%20India%27s/Navigating_all/blog1_esg_india.png",
+      image: "/Navigating%20India%27s/istockphoto-685936068-1024x1024.jpg",
       content: `
 # Navigating India's Evolving ESG Disclosure Landscape
 
