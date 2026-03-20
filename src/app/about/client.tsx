@@ -215,19 +215,49 @@ export function AboutPageClient() {
             className="grid grid-cols-2 gap-4"
           >
             {[
-              { icon: "Globe", label: "Global Standards" },
-              { icon: "MapPin", label: "Local Insight" },
-              { icon: "Users", label: "Expert Network" },
-              { icon: "Award", label: "Proven Methods" },
+              {
+                icon: "Globe",
+                label: "Global Standards",
+                image: "/Regional_Expertise/card_1_global_standards.png",
+              },
+              {
+                icon: "MapPin",
+                label: "Local Insight",
+                image: "/Regional_Expertise/card_2_local_insight.png",
+              },
+              {
+                icon: "Users",
+                label: "Expert Network",
+                image: "/Regional_Expertise/card_3_expert_network.png",
+              },
+              {
+                icon: "Award",
+                label: "Proven Methods",
+                image: "/Regional_Expertise/card_4_proven_methods.png",
+              },
             ].map((item, index) => (
               <div
                 key={item.label}
-                className="bg-gray-50 rounded-2xl p-6 text-center"
+                className="bg-gray-50 rounded-2xl p-6 text-center relative overflow-hidden"
               >
-                <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Icon name={item.icon} className="text-navy" size={24} />
+                <div className="absolute inset-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {/* Content readability */}
+                  <div className="absolute inset-0 bg-white/55" aria-hidden />
                 </div>
-                <span className="text-navy font-medium text-sm">{item.label}</span>
+
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Icon name={item.icon} className="text-navy" size={24} />
+                  </div>
+                  <span className="text-navy font-medium text-sm">{item.label}</span>
+                </div>
               </div>
             ))}
           </motion.div>

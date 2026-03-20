@@ -69,30 +69,35 @@ export const footprintsContent = {
         description:
           "Access to specialized professionals across domains, providing depth of expertise for complex engagements.",
         icon: "Users",
+        image: "/How_We_Operate/op_1_expert_networks.png",
       },
       {
         title: "Strategic Consultants",
         description:
           "Senior advisors with deep sector knowledge and strategic insight for high-impact advisory work.",
         icon: "Lightbulb",
+        image: "/How_We_Operate/op_2_strategic_consultants.png",
       },
       {
         title: "International Collaborators",
         description:
           "Partnerships with organizations globally, extending our reach and enabling cross-border service delivery.",
         icon: "Globe",
+        image: "/How_We_Operate/op_3_international.png",
       },
       {
         title: "Field Partners",
         description:
           "Local partners providing on-ground presence and cultural context for implementation-focused engagements.",
         icon: "MapPin",
+        image: "/How_We_Operate/op_4_field_partners.png",
       },
       {
         title: "Academic Institutions",
         description:
           "Collaborations with research institutions for knowledge development and technical advancement.",
         icon: "GraduationCap",
+        image: "/How_We_Operate/op_5_academic.png",
       },
     ],
   },
