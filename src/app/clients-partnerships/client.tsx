@@ -110,28 +110,28 @@ export function ClientsPageClient() {
                       loading="eager"
                     />
                     {/* Text readable rahe isliye image ke upar very light tint */}
-                    <div className="absolute inset-0 bg-white/20" aria-hidden />
+                    <div className="absolute inset-0 bg-navy/45" aria-hidden />
                   </div>
                 )}
                 <CardContent className="p-6 md:p-8 relative z-10">
-                  <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+                  <div className="w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
                     <Icon
                       name={partner.icon}
-                      className="text-navy group-hover:text-gold transition-colors"
+                      className="text-white group-hover:text-gold transition-colors"
                       size={28}
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-navy mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     {partner.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-white/90 leading-relaxed mb-6">
                     {partner.description}
                   </p>
                   <div className="space-y-2">
                     {partner.examples.map((example) => (
                       <div key={example} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-500">{example}</span>
+                        <span className="text-sm text-white/85">{example}</span>
                       </div>
                     ))}
                   </div>

@@ -70,17 +70,15 @@ export function Navbar() {
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-navy rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-semibold text-navy text-lg tracking-tight">
-                  Anantariva
-                </span>
-                <span className="hidden md:block text-gray-400 text-xs -mt-1">
-                  {siteConfig.tagline}
-                </span>
+            <Link href="/" className="flex items-center">
+              <div className="w-32 h-16 lg:w-40 lg:h-20 overflow-hidden flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo/Anantavira%202.png"
+                  alt="Anantariva logo"
+                  className="w-full h-full object-contain"
+                  loading="eager"
+                />
               </div>
             </Link>
 
