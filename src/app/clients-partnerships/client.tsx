@@ -99,8 +99,21 @@ export function ClientsPageClient() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-6 md:p-8">
+              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                {partner.image && (
+                  <div className="absolute inset-0 z-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={partner.image}
+                      alt={partner.title}
+                      className="w-full h-full object-cover opacity-80"
+                      loading="eager"
+                    />
+                    {/* Text readable rahe isliye image ke upar very light tint */}
+                    <div className="absolute inset-0 bg-white/20" aria-hidden />
+                  </div>
+                )}
+                <CardContent className="p-6 md:p-8 relative z-10">
                   <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
                     <Icon
                       name={partner.icon}
@@ -160,30 +173,49 @@ export function ClientsPageClient() {
       </Section>
 
       {/* Client Logos Placeholder */}
-      <Section variant="gray">
-        <div className="text-center">
-          <span className="text-gold text-sm font-semibold uppercase tracking-wider mb-4 block">
-            Building Our Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            Trusted Partners Coming Soon
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-12">
-            As we establish our practice, we&apos;re actively building relationships
-            with organizations committed to sustainable transformation. Client
-            logos will be featured here as partnerships develop.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="aspect-[3/2] bg-white rounded-xl border border-gray-200 flex items-center justify-center"
-              >
-                <div className="text-gray-300 text-sm font-medium">
-                  Partner Logo
+      <Section
+        variant="gray"
+        className="relative overflow-hidden"
+        containerClassName="max-w-none w-full px-0"
+      >
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-1360047233-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Trusted partners background"
+          />
+          <div className="absolute inset-0 bg-navy/60" aria-hidden />
+        </div>
+
+        <div className="text-center relative z-10 px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <span className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4 block">
+              Building Our Portfolio
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Trusted Partners Coming Soon
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto mb-12">
+              As we establish our practice, we&apos;re actively building relationships
+              with organizations committed to sustainable transformation. Client
+              logos will be featured here as partnerships develop.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-[3/2] bg-white rounded-xl border border-gray-200 flex items-center justify-center"
+                >
+                  <div className="text-white/70 text-sm font-medium">
+                    Partner Logo
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </Section>

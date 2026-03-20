@@ -18,6 +18,7 @@ export const clientsContent = {
       description:
         "Supporting government departments, ministries, and public institutions with policy advisory, program evaluation, and compliance management services.",
       icon: "Building",
+      image: "/Our_Partner_Ecosystem/partner_1_government.png",
       examples: [
         "Central and state government departments",
         "Public sector undertakings",
@@ -30,6 +31,7 @@ export const clientsContent = {
       description:
         "Partnering with established companies on ESG transformation, certification readiness, supply chain assurance, and sustainability strategy.",
       icon: "Building2",
+      image: "/Our_Partner_Ecosystem/partner_2_corporate.png",
       examples: [
         "Manufacturing and industrial enterprises",
         "Agribusiness and food companies",
@@ -42,6 +44,7 @@ export const clientsContent = {
       description:
         "Enabling SMEs to access certification, meet compliance requirements, and compete in sustainable value chains through tailored support.",
       icon: "Store",
+      image: "/Our_Partner_Ecosystem/partner_3_sme.png",
       examples: [
         "Processing and manufacturing SMEs",
         "Agricultural enterprises",
@@ -54,6 +57,7 @@ export const clientsContent = {
       description:
         "Working with farmer producer organizations, cooperatives, and smallholder groups to improve market access through certification and capacity building.",
       icon: "Tractor",
+      image: "/Our_Partner_Ecosystem/partner_4_landholders.png",
       examples: [
         "Farmer producer organizations",
         "Agricultural cooperatives",
@@ -66,6 +70,7 @@ export const clientsContent = {
       description:
         "Supporting cooperative institutions with governance frameworks, certification readiness, and sustainable business model development.",
       icon: "Users",
+      image: "/Our_Partner_Ecosystem/partner_5_cooperatives.png",
       examples: [
         "Agricultural cooperatives",
         "Producer collectives",
@@ -78,6 +83,7 @@ export const clientsContent = {
       description:
         "Providing independent monitoring, evaluation, and verification services for development programs and donor-funded initiatives.",
       icon: "Globe",
+      image: "/Our_Partner_Ecosystem/partner_6_international.png",
       examples: [
         "Multilateral development institutions",
         "Bilateral aid agencies",

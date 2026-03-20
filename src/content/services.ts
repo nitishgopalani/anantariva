@@ -189,66 +189,77 @@ export const servicesContent = {
         description:
           "From initial assessment to final delivery, we provide hands-on guidance ensuring strategies translate into real-world outcomes.",
         icon: "Target",
+        image: "/Our_Delivery_Approach/da_01_strategic.png",
       },
       {
         title: "Risk-Based Assessment Models",
         description:
           "Our assessments prioritize areas of highest impact, focusing resources where they matter most for your organization.",
         icon: "AlertTriangle",
+        image: "/Our_Delivery_Approach/da_02_risk.png",
       },
       {
         title: "ISO/IEC-Aligned Methodologies",
         description:
           "We apply internationally recognized frameworks ensuring consistency, quality, and global acceptance of our work.",
         icon: "Award",
+        image: "/Our_Delivery_Approach/da_03_iso.png",
       },
       {
         title: "Multidisciplinary Expert Networks",
         description:
           "Access to specialists across sectors and domains, bringing diverse perspectives to complex challenges.",
         icon: "Users",
+        image: "/Our_Delivery_Approach/da_04_network.png",
       },
       {
         title: "Transparent Reporting & Impact Measurement",
         description:
           "Clear, actionable deliverables with defined metrics enabling you to demonstrate progress and value.",
         icon: "BarChart3",
+        image: "/Our_Delivery_Approach/da_05_reporting.png",
       },
       {
         title: "End-to-End Project Management",
         description:
           "Comprehensive oversight from inception to completion, with clear milestones, timelines, and accountability frameworks.",
         icon: "ClipboardCheck",
+        image: "/Our_Delivery_Approach/da_06_project.png",
       },
       {
         title: "Stakeholder Engagement & Communication",
         description:
           "Proactive engagement with all stakeholders ensuring alignment, buy-in, and seamless collaboration throughout the project lifecycle.",
         icon: "MessageSquare",
+        image: "/Our_Delivery_Approach/da_07_stakeholder.png",
       },
       {
         title: "Continuous Improvement & Learning",
         description:
           "Iterative refinement based on feedback and lessons learned, ensuring solutions evolve with your organization's needs.",
         icon: "RefreshCw",
+        image: "/Our_Delivery_Approach/da_08_continuous.png",
       },
       {
         title: "Documentation & Compliance Readiness",
         description:
           "Structured documentation and evidence trails to support audits, certifications, and regulatory submissions.",
         icon: "FileCheck",
+        image: "/Our_Delivery_Approach/da_09_documentation.png",
       },
       {
         title: "Quality Assurance & Independent Review",
         description:
           "Rigorous quality checks and independent verification to ensure deliverables meet the highest standards of accuracy and reliability.",
         icon: "ShieldCheck",
+        image: "/Our_Delivery_Approach/da_10_quality.png",
       },
       {
         title: "Capacity Building & Knowledge Transfer",
         description:
           "Training and capability development so your team can sustain and build on outcomes long after the engagement ends.",
         icon: "GraduationCap",
+        image: "/Our_Delivery_Approach/da_11_capacity.png",
       },
     ],
   },

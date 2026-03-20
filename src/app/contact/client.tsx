@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, CheckCircle } from "lucide-react";
-import { PageHeader, Section } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,11 +51,74 @@ export function ContactPageClient() {
 
   return (
     <>
-      <PageHeader
-        title={contactContent.hero.title}
-        subtitle={contactContent.hero.subtitle}
-        description={contactContent.hero.description}
-      />
+      <section className="relative bg-navy text-white py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Contact background video"
+          >
+            <source
+              src="/video/istockphoto-2247679581-640_adpp_is.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="/video/istockphoto-2247679581-640_adpp_is.m4b"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10 z-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/20 to-transparent" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {contactContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {contactContent.hero.subtitle}
+              </motion.span>
+            )}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            >
+              {contactContent.hero.title}
+            </motion.h1>
+
+            {contactContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl"
+              >
+                {contactContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <Section>

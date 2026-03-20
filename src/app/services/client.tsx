@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PageHeader, Section, SectionHeader } from "@/components/layout";
+import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icon, CTASection } from "@/components/shared";
 import { servicesContent } from "@/content";
@@ -9,11 +9,59 @@ import { servicesContent } from "@/content";
 export function ServicesPageClient() {
   return (
     <>
-      <PageHeader
-        title={servicesContent.hero.title}
-        subtitle={servicesContent.hero.subtitle}
-        description={servicesContent.hero.description}
-      />
+      {/* Hero with full-size video background */}
+      <section className="relative min-h-[50vh] flex items-center py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <video
+            src="/video/istockphoto-2191630839-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Services background"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/10 to-transparent opacity-80" aria-hidden />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {servicesContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {servicesContent.hero.subtitle}
+              </motion.span>
+            )}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+            >
+              {servicesContent.hero.title}
+            </motion.h1>
+            {servicesContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl"
+              >
+                {servicesContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Industries Section */}
       <Section id="industries">
@@ -106,9 +154,21 @@ export function ServicesPageClient() {
             >
               <Card className="h-full bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-white/60">
                 <CardContent className="p-6">
-                  <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={pillar.icon} className="text-gold" size={28} />
-                  </div>
+                  {pillar.image ? (
+                    <div className="w-full h-28 rounded-xl overflow-hidden mb-4 bg-gray-50">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={pillar.image}
+                        alt={pillar.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon name={pillar.icon} className="text-gold" size={28} />
+                    </div>
+                  )}
                   <h3 className="text-lg font-semibold text-navy text-center mb-4 pb-3 border-b border-gold/30">
                     {pillar.title}
                   </h3>

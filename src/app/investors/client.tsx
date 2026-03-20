@@ -87,7 +87,19 @@ export function InvestorsPageClient() {
       </Section>
 
       {/* Investment Highlights */}
-      <Section variant="navy">
+      <Section variant="navy" className="relative overflow-hidden">
+        <div className="absolute inset-0" aria-hidden>
+          <video
+            src="/video/istockphoto-1017338764-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy/75" />
+        </div>
+        <div className="relative z-10">
         <SectionHeader
           subtitle={investorsContent.investmentHighlights.subtitle}
           title={investorsContent.investmentHighlights.title}
@@ -116,6 +128,7 @@ export function InvestorsPageClient() {
               </motion.div>
             )
           )}
+        </div>
         </div>
       </Section>
 

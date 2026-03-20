@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Clock, Calendar, Filter } from "lucide-react";
-import { PageHeader, Section } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,11 +22,66 @@ export function PortfolioPageClient() {
 
   return (
     <>
-      <PageHeader
-        title={portfolioContent.hero.title}
-        subtitle={portfolioContent.hero.subtitle}
-        description={portfolioContent.hero.description}
-      />
+      <section className="relative bg-navy text-white py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/video/istockphoto-1447915370-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Portfolio background video"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10 z-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/20 to-transparent" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            {portfolioContent.hero.subtitle && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+              >
+                {portfolioContent.hero.subtitle}
+              </motion.span>
+            )}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            >
+              {portfolioContent.hero.title}
+            </motion.h1>
+
+            {portfolioContent.hero.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl"
+              >
+                {portfolioContent.hero.description}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Featured Videos */}
       <Section className="pb-8 md:pb-12">
