@@ -164,52 +164,6 @@ export const clientsContent = {
       },
     ],
   },
-  partnershipLinks: {
-    title: "Partnership Links & Reference Platforms",
-    subtitle: "ESG and ISO reference ecosystems",
-    description:
-      "Access globally recognized ESG platforms and ISO repositories to support compliance, benchmarking, and certification-readiness initiatives.",
-    esgPlatforms: [
-      {
-        name: "GRI Standards",
-        url: "https://www.globalreporting.org/standards/",
-        description:
-          "Global sustainability reporting standards for transparent ESG disclosures.",
-      },
-      {
-        name: "ISSB (IFRS Sustainability)",
-        url: "https://www.ifrs.org/issued-standards/ifrs-sustainability-standards-navigator/",
-        description:
-          "International baseline sustainability disclosure standards (IFRS S1/S2).",
-      },
-      {
-        name: "CDP",
-        url: "https://www.cdp.net/en",
-        description:
-          "Global environmental disclosure platform covering climate, water, and forests.",
-      },
-    ],
-    isoRepositories: [
-      {
-        name: "ISO Standards Catalogue",
-        url: "https://www.iso.org/standards.html",
-        description:
-          "Official ISO standards directory and publication index.",
-      },
-      {
-        name: "ISO Management System Standards",
-        url: "https://www.iso.org/management-system-standards.html",
-        description:
-          "Reference hub for ISO management-system frameworks and guidance.",
-      },
-      {
-        name: "ISO Conformity Assessment (CASCO)",
-        url: "https://www.iso.org/committee/54992.html",
-        description:
-          "Conformity assessment references relevant to certification and assurance.",
-      },
-    ],
-  },
   cta: {
     title: "Start a Conversation",
     description:
