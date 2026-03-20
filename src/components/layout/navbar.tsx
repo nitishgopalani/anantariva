@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Search, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,9 +15,47 @@ export function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
+  const router = useRouter();
+
+  const languageOptions = [
+    { code: "EN", label: "English" },
+    { code: "HI", label: "Hindi" },
+  ];
+
+  const searchItems = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/about#experts" },
+    { label: "Our Presence", href: "/footprints" },
+    { label: "Services", href: "/services" },
+    { label: "Clients & Partnerships", href: "/clients-partnerships" },
+    { label: "Insights", href: "/insights" },
+    { label: "Newsroom", href: "/newsroom" },
+    { label: "Knowledge Repository", href: "/knowledge" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Investors", href: "/investors" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
+    { label: "Services - Industries", href: "/services#industries" },
+    { label: "Services - Delivery Approach", href: "/services#approach" },
+  ];
+
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredSearchItems = normalizedQuery
+    ? searchItems.filter((item) =>
+        item.label.toLowerCase().includes(normalizedQuery)
+      )
+    : [];
+
+  const handleSearchNavigate = (href: string) => {
+    setSearchOpen(false);
+    setSearchQuery("");
+    router.push(href);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,7 +210,7 @@ export function Navbar() {
                   aria-label="Language"
                 >
                   <Globe className="h-5 w-5 flex-shrink-0" strokeWidth={1.5} />
-                  <span className="text-sm font-medium">GLOBAL - EN</span>
+                  <span className="text-sm font-medium">{`GLOBAL - ${selectedLanguage}`}</span>
                   <ChevronDown className={cn("h-4 w-4 transition-transform", languageOpen && "rotate-180")} />
                 </button>
                 <AnimatePresence>
@@ -183,12 +221,24 @@ export function Navbar() {
                       exit={{ opacity: 0, y: -8 }}
                       className="absolute top-full right-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
                     >
-                      <button className="w-full px-4 py-2 text-left text-sm font-medium text-navy bg-gray-50">
-                        English
-                      </button>
-                      <button className="w-full px-4 py-2 text-left text-sm text-gray-600 hover:bg-gray-50">
-                        Hindi
-                      </button>
+                      {languageOptions.map((option) => (
+                        <button
+                          key={option.code}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            setSelectedLanguage(option.code);
+                            setLanguageOpen(false);
+                          }}
+                          className={cn(
+                            "w-full px-4 py-2 text-left text-sm hover:bg-gray-50",
+                            selectedLanguage === option.code
+                              ? "font-medium text-navy bg-gray-50"
+                              : "text-gray-600"
+                          )}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -314,22 +364,30 @@ export function Navbar() {
               aria-hidden
             />
             <motion.div
-              initial={{ opacity: 0, y: -16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-0 left-0 right-0 z-[70] bg-white shadow-lg border-b border-gray-100"
+              className="fixed inset-x-0 top-0 z-[70] pt-4 px-4 lg:pt-8"
             >
-              <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-4">
-                <div className="flex items-center gap-3 max-w-2xl mx-auto">
-                  <Search className="h-6 w-6 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
+              <div className="max-w-3xl mx-auto rounded-2xl border border-gray-200/80 bg-white/95 shadow-2xl backdrop-blur-md overflow-hidden">
+                <div className="flex items-center gap-3 px-4 md:px-5 py-3.5 border-b border-gray-100">
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center">
+                    <Search className="h-5 w-5 text-navy/70 flex-shrink-0" strokeWidth={1.8} />
+                  </div>
                   <input
                     ref={searchInputRef}
                     type="search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search insights, services, pages..."
-                    className="flex-1 py-3 text-base bg-transparent border-0 outline-none placeholder:text-gray-400 text-navy"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && filteredSearchItems.length > 0) {
+                        e.preventDefault();
+                        handleSearchNavigate(filteredSearchItems[0].href);
+                      }
+                    }}
+                    placeholder="Search pages, services, insights..."
+                    className="flex-1 py-2 text-base bg-transparent border-0 outline-none placeholder:text-gray-400 text-navy"
                     aria-label="Search"
                   />
                   <button
@@ -340,9 +398,43 @@ export function Navbar() {
                     <X className="h-5 w-5" />
                   </button>
                 </div>
-                <p className="text-xs text-gray-400 mt-2 max-w-2xl mx-auto pl-9">
-                  Press Enter to search, Esc to close
-                </p>
+                <div className="px-4 md:px-5 py-2.5 bg-gray-50/70 border-b border-gray-100">
+                  <p className="text-xs text-gray-500">
+                    Press <span className="font-semibold text-gray-700">Enter</span> to open first result,{" "}
+                    <span className="font-semibold text-gray-700">Esc</span> to close
+                  </p>
+                </div>
+                {normalizedQuery ? (
+                  <div className="px-3 md:px-4 py-3 max-h-[50vh] overflow-y-auto">
+                    {filteredSearchItems.length > 0 ? (
+                      <div className="space-y-1.5">
+                        {filteredSearchItems.slice(0, 8).map((item) => (
+                          <button
+                            key={item.href}
+                            onClick={() => handleSearchNavigate(item.href)}
+                            className="w-full text-left px-3 py-2.5 rounded-xl border border-transparent hover:border-gold/30 hover:bg-gold/5 text-sm text-navy transition-colors"
+                          >
+                            <span className="font-medium">{item.label}</span>
+                            <span className="block text-xs text-gray-500 mt-0.5">{item.href}</span>
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500 px-3 py-4">
+                        No results found for &quot;{searchQuery}&quot;.
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div className="px-4 md:px-5 py-5">
+                    <p className="text-sm text-gray-500">
+                      Try searching for <span className="text-navy font-medium">Services</span>,{" "}
+                      <span className="text-navy font-medium">Insights</span>,{" "}
+                      <span className="text-navy font-medium">Careers</span> or{" "}
+                      <span className="text-navy font-medium">Contact</span>.
+                    </p>
+                  </div>
+                )}
               </div>
             </motion.div>
           </>

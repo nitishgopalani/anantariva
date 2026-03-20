@@ -11,6 +11,7 @@ export const servicesContent = {
       title: "Agriculture & Agribusiness",
       subtitle: "Including Medicinal Plant Value Chains",
       icon: "Wheat",
+      image: "/Services%20%26%20Industries/Agriculture%20%26%20Agribusiness.jpg",
       forWhom:
         "Agribusinesses, farmer producer organizations, export houses, plantation companies, medicinal plant processors, organic producers, and agricultural input companies.",
       focus:
@@ -28,6 +29,7 @@ export const servicesContent = {
       id: "food",
       title: "Food Processing & Supply Chains",
       icon: "UtensilsCrossed",
+      image: "/Services%20%26%20Industries/Food%20Processing%20%26%20Supply%20Chains.jpg",
       forWhom:
         "Food processors, packagers, cold chain operators, food service companies, retailers, and supply chain intermediaries.",
       focus:
@@ -45,6 +47,7 @@ export const servicesContent = {
       id: "forestry",
       title: "Forestry, Plantations & Natural Resources",
       icon: "TreePine",
+      image: "/Services%20%26%20Industries/Forestry,%20Plantations%20%26%20Natural%20Resources.jpg",
       forWhom:
         "Forestry companies, plantation operators, timber processors, non-timber forest product enterprises, and natural resource management organizations.",
       focus:
@@ -62,6 +65,7 @@ export const servicesContent = {
       id: "climate",
       title: "Climate, Environment & Sustainability",
       icon: "Cloud",
+      image: "/Services%20%26%20Industries/Climate,%20Environment%20%26%20Sustainability.jpg",
       forWhom:
         "Corporates with ESG commitments, carbon project developers, sustainability teams, investors, and organizations pursuing environmental certifications.",
       focus:
@@ -79,6 +83,7 @@ export const servicesContent = {
       id: "infrastructure",
       title: "Infrastructure & Manufacturing",
       icon: "Building2",
+      image: "/Services%20%26%20Industries/Infrastructure%20%26%20Manufacturing.jpg",
       forWhom:
         "Construction companies, infrastructure developers, manufacturing units, engineering firms, and industrial enterprises.",
       focus:
@@ -96,6 +101,7 @@ export const servicesContent = {
       id: "defence",
       title: "Defence & Strategic Institutions",
       icon: "Shield",
+      image: "/Services%20%26%20Industries/Defence%20%26%20Strategic%20Institutions.jpg",
       forWhom:
         "Defence establishments, ordnance factories, strategic sector suppliers, and aerospace and defence manufacturing units.",
       focus:
@@ -113,6 +119,7 @@ export const servicesContent = {
       id: "development",
       title: "Development & Donor-Funded Programs",
       icon: "Globe",
+      image: "/Services%20%26%20Industries/Development%20%26%20Donor-Funded%20Programs.jpg",
       forWhom:
         "International development agencies, NGOs, government programs, multilateral institutions, and implementing partners.",
       focus:
@@ -130,6 +137,7 @@ export const servicesContent = {
       id: "marine",
       title: "Coastal & Marine Economy",
       icon: "Anchor",
+      image: "/Services%20%26%20Industries/Coastal%20%26%20Marine%20Economy.jpg",
       forWhom:
         "Fisheries enterprises, aquaculture operations, seafood processors, port authorities, and coastal development organizations.",
       focus:
@@ -147,6 +155,7 @@ export const servicesContent = {
       id: "technology",
       title: "Technology, AI & Digital Governance",
       icon: "Cpu",
+      image: "/Services%20%26%20Industries/Technology,%20AI%20%26%20Digital%20Governance.jpg",
       forWhom:
         "Technology companies, AI developers, digital platforms, data-driven enterprises, and organizations undergoing digital transformation.",
       focus:
@@ -164,6 +173,7 @@ export const servicesContent = {
       id: "research",
       title: "Research, Academia & Innovation Institutions",
       icon: "GraduationCap",
+      image: "/Services%20%26%20Industries/Research,%20Academia%20%26%20Innovation%20Institutions.jpg",
       forWhom:
         "Research institutions, universities, think tanks, innovation hubs, and R&D organizations.",
       focus:

@@ -156,17 +156,31 @@ export function ClientsPageClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gray-50 rounded-2xl p-6 md:p-8 hover:bg-gray-100 transition-colors"
+              className="relative overflow-hidden rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-10 h-10 bg-navy text-white rounded-lg flex items-center justify-center mb-4 text-lg font-bold">
-                {index + 1}
+              {model.image && (
+                <div className="absolute inset-0 z-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={model.image}
+                    alt={model.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-white/58" aria-hidden />
+                </div>
+              )}
+              <div className="relative z-10">
+                <div className="w-10 h-10 bg-navy text-white rounded-lg flex items-center justify-center mb-4 text-lg font-bold">
+                  {index + 1}
+                </div>
+                <h3 className="text-lg font-semibold text-navy mb-2">
+                  {model.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {model.description}
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-navy mb-2">
-                {model.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {model.description}
-              </p>
             </motion.div>
           ))}
         </div>
@@ -290,29 +304,44 @@ export function ClientsPageClient() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-navy via-navy to-navy-light rounded-3xl p-8 md:p-12 lg:p-16 text-center"
+          className="relative overflow-hidden rounded-3xl p-8 md:p-12 lg:p-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {clientsContent.cta.title}
-          </h2>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            {clientsContent.cta.description}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="gold" size="lg" asChild>
-              <Link href="/contact">
-                {clientsContent.cta.primaryButton}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-navy"
-              asChild
+          <div className="absolute inset-0 z-0" aria-hidden>
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
             >
-              <Link href="/contact">{clientsContent.cta.secondaryButton}</Link>
-            </Button>
+              <source src="/video/Start%20a%20Conversation.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-navy/70" />
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {clientsContent.cta.title}
+            </h2>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+              {clientsContent.cta.description}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="gold" size="lg" asChild>
+                <Link href="/contact">
+                  {clientsContent.cta.primaryButton}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-navy"
+                asChild
+              >
+                <Link href="/contact">{clientsContent.cta.secondaryButton}</Link>
+              </Button>
+            </div>
           </div>
         </motion.div>
       </Section>

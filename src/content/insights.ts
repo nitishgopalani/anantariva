@@ -13,6 +13,7 @@ export interface InsightPost {
   publishedAt: string;
   readingTime: string;
   image: string;
+  relatedImage?: string;
   content: string;
   relatedSlugs: string[];
 }
@@ -47,7 +48,7 @@ export const insightsContent = {
       },
       publishedAt: "2024-01-15",
       readingTime: "8 min read",
-      image: "/images/insights/esg-disclosure.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog1_esg_india.png",
       content: `
 # Navigating India's Evolving ESG Disclosure Landscape
 
@@ -86,7 +87,8 @@ The goal isn't just compliance—it's using disclosure as a catalyst for genuine
       },
       publishedAt: "2024-01-08",
       readingTime: "10 min read",
-      image: "/images/insights/carbon-accounting.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog2_carbon_supply.png",
+      relatedImage: "/Related%20Articles/Carbon%20Accounting%20Across%20Complex%20Supply%20Chains.jpg",
       content: `
 # Carbon Accounting Across Complex Supply Chains
 
@@ -128,7 +130,8 @@ Engage suppliers progressively. Begin with your largest suppliers and tier-1 par
       },
       publishedAt: "2024-01-02",
       readingTime: "7 min read",
-      image: "/images/insights/compliance-systems.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog3_compliance.png",
+      relatedImage: "/Related%20Articles/Building%20Robust%20Compliance%20Management%20Systems.jpg",
       content: `
 # Building Robust Compliance Management Systems
 
@@ -167,7 +170,7 @@ The most effective compliance systems don't operate in isolation. They're integr
       },
       publishedAt: "2023-12-20",
       readingTime: "9 min read",
-      image: "/images/insights/sustainable-agriculture.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog4_agri_cert.png",
       content: `
 # Sustainable Agriculture Certification: A Pathway to Market Access
 
@@ -211,7 +214,7 @@ Certification is a journey, not a destination. Success requires:
       },
       publishedAt: "2023-12-12",
       readingTime: "8 min read",
-      image: "/images/insights/ai-governance.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog5_ai_governance.png",
       content: `
 # AI Governance Frameworks for Responsible Innovation
 
@@ -255,7 +258,7 @@ Begin with an inventory of AI systems in use or under development. Assess each f
       },
       publishedAt: "2023-12-05",
       readingTime: "11 min read",
-      image: "/images/insights/certification-readiness.jpg",
+      image: "/Navigating%20India%27s/Navigating_all/blog6_cert_readiness.png",
       content: `
 # A Practical Guide to Certification Readiness
 

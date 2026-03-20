@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Download } from "lucide-react";
-import { PageHeader, Section, SectionHeader } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,11 +12,59 @@ import { newsroomContent } from "@/content";
 export function NewsroomPageClient() {
   return (
     <>
-      <PageHeader
-        title={newsroomContent.hero.title}
-        subtitle={newsroomContent.hero.subtitle}
-        description={newsroomContent.hero.description}
-      />
+      <section className="relative bg-navy text-white py-20 md:py-28 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/video/istockphoto-1282534827-640_adpp_is.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-label="Newsroom background video"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden />
+        </div>
+
+        <div className="absolute inset-0 opacity-10 z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-gold/20 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-block text-gold text-sm font-semibold uppercase tracking-wider mb-4"
+            >
+              {newsroomContent.hero.subtitle}
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            >
+              {newsroomContent.hero.title}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl"
+            >
+              {newsroomContent.hero.description}
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* News Sections */}
       <Section>
@@ -42,9 +90,21 @@ export function NewsroomPageClient() {
                 {section.items.map((item, itemIndex) => (
                   <Card
                     key={item.title}
-                    className="hover:shadow-lg transition-all duration-300"
+                    className="hover:shadow-lg transition-all duration-300 relative overflow-hidden"
                   >
-                    <CardContent className="p-6">
+                    {item.image && (
+                      <div className="absolute inset-0 z-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-white/70" aria-hidden />
+                      </div>
+                    )}
+                    <CardContent className="p-6 relative z-10">
                       <div className="flex items-start justify-between gap-4 mb-3">
                         <Badge variant="secondary" className="text-xs">
                           {item.type}
@@ -75,15 +135,25 @@ export function NewsroomPageClient() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6">
-                  <Mail className="text-navy h-7 w-7" />
+            <Card className="h-full relative overflow-hidden">
+              <div className="absolute inset-0 z-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Insights/Media%20Inquiries/Media%20Inquiries.jpg"
+                  alt="Media Inquiries"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-white/45" aria-hidden />
+              </div>
+              <CardContent className="p-8 relative z-10">
+                <div className="w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center mb-6">
+                  <Mail className="text-white h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-4">
+                <h3 className="text-xl font-bold text-white mb-4">
                   {newsroomContent.mediaContact.title}
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-white/90 mb-6">
                   {newsroomContent.mediaContact.description}
                 </p>
                 <a
@@ -93,7 +163,7 @@ export function NewsroomPageClient() {
                   <Mail className="mr-2 h-5 w-5" />
                   {newsroomContent.mediaContact.email}
                 </a>
-                <p className="text-sm text-gray-500 mt-4">
+                <p className="text-sm text-white/80 mt-4">
                   {newsroomContent.mediaContact.note}
                 </p>
               </CardContent>
@@ -106,8 +176,18 @@ export function NewsroomPageClient() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full bg-navy text-white">
-              <CardContent className="p-8">
+            <Card className="h-full bg-navy text-white relative overflow-hidden">
+              <div className="absolute inset-0 z-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Insights/Media%20Inquiries/Press%20Kit.jpg"
+                  alt="Press Kit"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-navy/60" aria-hidden />
+              </div>
+              <CardContent className="p-8 relative z-10">
                 <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6">
                   <Download className="text-gold h-7 w-7" />
                 </div>

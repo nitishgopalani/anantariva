@@ -15,30 +15,35 @@ export const investorsContent = {
         description:
           "Regulatory momentum and investor expectations are driving unprecedented demand for ESG advisory, reporting, and assurance services.",
         icon: "TrendingUp",
+        image: "/Strategic%20Positioning/sp_1_esg_transition.png",
       },
       {
         title: "Climate Finance",
         description:
           "The climate finance ecosystem—from carbon markets to green bonds—requires credible verification and advisory expertise.",
         icon: "Leaf",
+        image: "/Strategic%20Positioning/sp_2_climate_finance.png",
       },
       {
         title: "Certification Ecosystems",
         description:
           "Supply chain due diligence and sustainability certifications are becoming prerequisites for market access globally.",
         icon: "Award",
+        image: "/Strategic%20Positioning/sp_3_cert_ecosystems.png",
       },
       {
         title: "AI-Enabled Compliance",
         description:
           "Technology transformation in compliance and governance creates opportunities for innovative service delivery models.",
         icon: "Cpu",
+        image: "/Strategic%20Positioning/sp_4_ai_compliance.png",
       },
       {
         title: "Sustainable Value Chains",
         description:
           "Growing consumer and regulatory pressure on supply chain sustainability drives demand for traceability and verification.",
         icon: "Link",
+        image: "/Strategic%20Positioning/sp_5_value_chains.png",
       },
     ],
   },

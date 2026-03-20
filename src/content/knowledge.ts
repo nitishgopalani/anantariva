@@ -18,6 +18,7 @@ export interface Resource {
   downloadable: boolean;
   featured: boolean;
   publishedAt: string;
+  image?: string;
 }
 
 export const knowledgeContent = {
@@ -50,6 +51,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: true,
       publishedAt: "2024-01",
+      image: "/Knowledge%20Repository/ESG%20Reporting%20Framework%20Guid.jpg",
     },
     {
       id: "2",
@@ -62,6 +64,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: true,
       publishedAt: "2024-01",
+      image: "/Knowledge%20Repository/Carbon%20Accounting%20Methodology%20Brief.jpg",
     },
     {
       id: "3",
@@ -74,6 +77,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2023-12",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Sustainable%20Agriculture%20Certification%20Landscape.jpg",
     },
     {
       id: "4",
@@ -86,6 +90,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: true,
       publishedAt: "2024-01",
+      image: "/Knowledge%20Repository/Risk-Based%20Assessment%20Framework.jpg",
     },
     {
       id: "5",
@@ -98,6 +103,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2024-01",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Supply%20Chain%20Due%20Diligence%20Toolkit.jpg",
     },
     {
       id: "6",
@@ -110,6 +116,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2023-12",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Climate%20Policy%20Landscape%20India.jpg",
     },
     {
       id: "7",
@@ -122,6 +129,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2024-01",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/M%26E%20Framework%20Design%20Guide.jpg",
     },
     {
       id: "8",
@@ -134,6 +142,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2023-12",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Agricultural%20Value%20Chain%20Case%20Study.jpg",
     },
   ] as Resource[],
   gatedDownload: {
