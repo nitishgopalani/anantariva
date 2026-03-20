@@ -1,0 +1,204 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Play, Clock, Calendar, Filter } from "lucide-react";
+import { PageHeader, Section } from "@/components/layout";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { CTASection } from "@/components/shared";
+import { portfolioContent } from "@/content";
+
+export function PortfolioPageClient() {
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+
+  const filteredItems =
+    activeCategory === "all"
+      ? portfolioContent.items
+      : portfolioContent.items.filter((item) => item.category === activeCategory);
+
+  const featuredItems = portfolioContent.items.filter((item) => item.featured);
+
+  return (
+    <>
+      <PageHeader
+        title={portfolioContent.hero.title}
+        subtitle={portfolioContent.hero.subtitle}
+        description={portfolioContent.hero.description}
+      />
+
+      {/* Featured Videos */}
+      <Section className="pb-8 md:pb-12">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-navy mb-2">Featured Content</h2>
+          <p className="text-gray-600">
+            Highlights from our project documentaries and thought leadership
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          {featuredItems.slice(0, 2).map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <div className="relative aspect-video bg-gradient-to-br from-navy/10 to-gold/10">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
+                      <Play className="h-8 w-8 text-navy ml-1" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 right-4">
+                    <Badge
+                      variant="secondary"
+                      className="bg-black/70 text-white border-0"
+                    >
+                      <Clock className="h-3 w-3 mr-1" />
+                      {item.duration}
+                    </Badge>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="gold">{item.category}</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-navy mb-2 group-hover:text-gold transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center text-sm text-gray-400">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    {item.publishedAt}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Category Filters */}
+      <Section variant="gray" className="py-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-wrap justify-center gap-2">
+            {portfolioContent.categories.map((category) => (
+              <button
+                key={category.value}
+                onClick={() => setActiveCategory(category.value)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  activeCategory === category.value
+                    ? "bg-navy text-white"
+                    : "bg-white text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-500">
+            <Filter className="h-4 w-4" />
+            <span>{filteredItems.length} videos</span>
+          </div>
+        </div>
+      </Section>
+
+      {/* Video Grid */}
+      <Section>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredItems.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group cursor-pointer">
+                <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-50">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow group-hover:scale-110 transition-transform">
+                      <Play className="h-6 w-6 text-navy ml-0.5" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-2 right-2">
+                    <Badge
+                      variant="secondary"
+                      className="bg-black/70 text-white border-0 text-xs"
+                    >
+                      {item.duration}
+                    </Badge>
+                  </div>
+                </div>
+                <CardContent className="p-4">
+                  <Badge variant="outline" className="mb-2 text-xs">
+                    {item.category}
+                  </Badge>
+                  <h3 className="font-semibold text-navy text-sm mb-2 line-clamp-2 group-hover:text-gold transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                    {item.description}
+                  </p>
+                  <div className="flex items-center text-xs text-gray-400">
+                    <Calendar className="h-3 w-3 mr-1" />
+                    {item.publishedAt}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {filteredItems.length === 0 && (
+          <div className="text-center py-12">
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Play className="h-8 w-8 text-gray-400" />
+            </div>
+            <p className="text-gray-500 mb-2">No videos found</p>
+            <p className="text-sm text-gray-400">
+              Try selecting a different category
+            </p>
+          </div>
+        )}
+      </Section>
+
+      {/* Video Player Notice */}
+      <Section variant="gray">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Play className="h-8 w-8 text-navy" />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+            Video Library Coming Soon
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Our video portfolio is being prepared for online viewing. Contact us
+            for access to specific project documentation or case study videos.
+          </p>
+          <p className="text-sm text-gray-500 bg-gold/10 border border-gold/20 rounded-lg p-4">
+            {portfolioContent.videoPlayer.note}
+          </p>
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <CTASection
+        title={portfolioContent.cta.title}
+        description={portfolioContent.cta.description}
+        primaryButton={{ text: portfolioContent.cta.button, href: "/contact" }}
+      />
+    </>
+  );
+}
