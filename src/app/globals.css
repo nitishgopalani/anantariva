@@ -160,3 +160,35 @@ body {
   --tw-prose-links: hsl(var(--navy));
   --tw-prose-bold: hsl(var(--navy));
 }
+
+/* Google Translate UI cleanup */
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe[id*=":"] {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight {
+  display: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element,
+.goog-logo-link,
+.goog-te-gadget > span,
+.goog-te-gadget,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,
+.skiptranslate {
+  display: none !important;
+}

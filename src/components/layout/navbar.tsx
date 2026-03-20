@@ -9,6 +9,22 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { siteConfig, navigation } from "@/content";
 
+declare global {
+  interface Window {
+    google?: {
+      translate?: {
+        TranslateElement?: new (
+          options: { pageLanguage: string; includedLanguages: string; autoDisplay: boolean },
+          elementId: string
+        ) => unknown;
+      };
+    };
+    googleTranslateElementInit?: () => void;
+  }
+}
+
+const GOOGLE_COOKIE_KEY = "googtrans";
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,6 +34,7 @@ export function Navbar() {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const pendingLanguageRef = useRef<"EN" | "HI" | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -57,6 +74,32 @@ export function Navbar() {
     router.push(href);
   };
 
+  const applyGoogleLanguage = (code: "EN" | "HI") => {
+    if (typeof window === "undefined") return;
+
+    const target = code === "HI" ? "hi" : "en";
+    const cookieValue = `/auto/${target}`;
+    document.documentElement.lang = target;
+    document.cookie = `${GOOGLE_COOKIE_KEY}=${cookieValue}; path=/; max-age=31536000`;
+    document.cookie = `${GOOGLE_COOKIE_KEY}=${cookieValue}; domain=.${window.location.hostname}; path=/; max-age=31536000`;
+
+    const triggerTranslate = () => {
+      const translateSelect = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+      if (!translateSelect) return false;
+      translateSelect.value = target;
+      translateSelect.dispatchEvent(new Event("change"));
+      translateSelect.dispatchEvent(new Event("input"));
+      return true;
+    };
+
+    if (triggerTranslate()) {
+      pendingLanguageRef.current = null;
+      return;
+    }
+
+    pendingLanguageRef.current = code;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -87,6 +130,72 @@ export function Navbar() {
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setSelectedLanguage("EN");
+    pendingLanguageRef.current = "EN";
+    applyGoogleLanguage("EN");
+
+    window.googleTranslateElementInit = () => {
+      if (!window.google?.translate?.TranslateElement) return;
+
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "en,hi",
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
+
+      const currentLanguage: "EN" | "HI" = "EN";
+      pendingLanguageRef.current = currentLanguage;
+
+      let attempts = 0;
+      const maxAttempts = 40;
+      const waitForTranslateWidget = () => {
+        attempts += 1;
+        const widgetFound = !!document.querySelector(".goog-te-combo");
+        if (widgetFound) {
+          applyGoogleLanguage(pendingLanguageRef.current || currentLanguage);
+          return;
+        }
+        if (attempts < maxAttempts) {
+          window.setTimeout(waitForTranslateWidget, 150);
+        }
+      };
+      waitForTranslateWidget();
+    };
+
+    if (!document.getElementById("google-translate-script")) {
+      const script = document.createElement("script");
+      script.id = "google-translate-script";
+      script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      document.body.appendChild(script);
+    } else if (window.google?.translate?.TranslateElement) {
+      const fallbackLanguage: "EN" | "HI" = "EN";
+      pendingLanguageRef.current = fallbackLanguage;
+      window.setTimeout(() => applyGoogleLanguage(fallbackLanguage), 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const current = selectedLanguage === "HI" ? "HI" : "EN";
+    window.setTimeout(() => applyGoogleLanguage(current), 50);
+  }, [pathname, selectedLanguage]);
+
+  useEffect(() => {
+    // If translator widget mounts later, apply pending language immediately.
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(".goog-te-combo") && pendingLanguageRef.current) {
+        applyGoogleLanguage(pendingLanguageRef.current);
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -227,6 +336,7 @@ export function Navbar() {
                           onMouseDown={(e) => {
                             e.preventDefault();
                             setSelectedLanguage(option.code);
+                            applyGoogleLanguage(option.code as "EN" | "HI");
                             setLanguageOpen(false);
                           }}
                           className={cn(
@@ -440,6 +550,7 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
+      <div id="google_translate_element" className="hidden" aria-hidden />
     </>
   );
 }
