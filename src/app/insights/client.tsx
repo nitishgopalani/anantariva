@@ -44,7 +44,7 @@ export function InsightsPageClient() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_var(--tw-gradient-stops))] from-emerald/10 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-20">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

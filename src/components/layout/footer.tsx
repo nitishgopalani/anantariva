@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
@@ -96,7 +96,7 @@ export function Footer() {
       <Separator className="bg-white/10" />
 
       {/* Bottom Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-6">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm">
             &copy; {currentYear} {siteConfig.name}. All rights reserved.

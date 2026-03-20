@@ -28,7 +28,7 @@ function Section({
   };
 
   const content = (
-    <div className={cn("container mx-auto px-4 lg:px-8", containerClassName)}>
+    <div className={cn("container mx-auto px-4 lg:px-8 max-w-7xl", containerClassName)}>
       {children}
     </div>
   );

@@ -40,7 +40,7 @@ export function CTASection({
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -67,7 +67,7 @@ export function Navbar() {
             : "bg-white"
         )}
       >
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
@@ -225,7 +225,7 @@ export function Navbar() {
               transition={{ duration: 0.2 }}
               className="lg:hidden border-t border-gray-100 bg-white overflow-hidden"
             >
-              <div className="container mx-auto px-4 py-4 space-y-2">
+              <div className="container mx-auto px-4 max-w-7xl py-4 space-y-2">
                 {navigation.main.map((item) => (
                   <div key={item.name}>
                     {item.children ? (
@@ -322,7 +322,7 @@ export function Navbar() {
               transition={{ duration: 0.2 }}
               className="fixed top-0 left-0 right-0 z-[70] bg-white shadow-lg border-b border-gray-100"
             >
-              <div className="container mx-auto px-4 lg:px-8 py-4">
+              <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-4">
                 <div className="flex items-center gap-3 max-w-2xl mx-auto">
                   <Search className="h-6 w-6 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
                   <input
