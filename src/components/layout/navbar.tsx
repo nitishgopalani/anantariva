@@ -67,7 +67,7 @@ export function Navbar() {
             : "bg-white"
         )}
       >
-        <div className="container mx-auto px-4 lg:px-8 lg:pr-16">
+        <div className="container mx-auto px-4 lg:px-8">
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
@@ -78,14 +78,14 @@ export function Navbar() {
                 <span className="font-semibold text-navy text-lg tracking-tight">
                   Anantariva
                 </span>
-                <span className="hidden md:inline text-gray-400 text-xs block -mt-1">
+                <span className="hidden md:block text-gray-400 text-xs -mt-1">
                   {siteConfig.tagline}
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1">
               {navigation.main.map((item) => (
                 <div key={item.name} className="relative">
                   {item.children ? (
@@ -157,7 +157,7 @@ export function Navbar() {
             </div>
 
             {/* Search, Language & CTA */}
-            <div className="hidden lg:flex items-center gap-4 lg:ml-12 lg:pl-2">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
               <button
                 onClick={() => setSearchOpen(true)}
                 className="flex items-center gap-2 text-gray-600 hover:text-navy transition-colors px-2 py-1.5 rounded-lg hover:bg-gray-50"
