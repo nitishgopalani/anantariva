@@ -100,40 +100,42 @@ export function KnowledgePageClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 group border-gold/20 relative overflow-hidden">
-                {resource.image && (
-                  <div className="absolute inset-0 z-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={resource.image}
-                      alt={resource.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-navy/55" aria-hidden />
+              <Card className="group h-full overflow-hidden border border-gold/20 p-0 transition-all duration-300 hover:shadow-xl">
+                <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-navy/10">
+                  {resource.image && (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={resource.image}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-navy/30" aria-hidden />
+                    </>
+                  )}
+                  <div className="absolute left-4 top-4 z-10 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <FileText className="text-white h-6 w-6" />
                   </div>
-                )}
-                <CardContent className="p-6 relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center">
-                      <FileText className="text-white h-6 w-6" />
-                    </div>
+                  <div className="absolute right-4 top-4 z-10">
                     <Badge variant="gold">{resource.format}</Badge>
                   </div>
-                  <Badge variant="outline" className="mb-3 border-white/40 text-white">
+                </div>
+                <CardContent className="p-6 border-t border-gray-100 bg-white">
+                  <Badge variant="outline" className="mb-3">
                     {resource.category}
                   </Badge>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors">
+                  <h3 className="text-lg font-semibold text-navy mb-2 group-hover:text-gold transition-colors">
                     {resource.title}
                   </h3>
-                  <p className="text-sm text-white/90 line-clamp-3 mb-4">
+                  <p className="text-sm text-gray-600 line-clamp-3 mb-4">
                     {resource.description}
                   </p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {resource.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-white/15 rounded text-xs text-white/90"
+                        className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600"
                       >
                         {tag}
                       </span>
@@ -142,7 +144,7 @@ export function KnowledgePageClient() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full border-white/50 text-white hover:bg-gold hover:text-white hover:border-gold transition-colors"
+                    className="w-full"
                     disabled
                   >
                     <Download className="mr-2 h-4 w-4" />
@@ -205,26 +207,28 @@ export function KnowledgePageClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
-                {resource.image && (
-                  <div className="absolute inset-0 z-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={resource.image}
-                      alt={resource.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-white/65" aria-hidden />
+              <Card className="group h-full overflow-hidden border border-gray-200 p-0 transition-all duration-300 hover:shadow-lg">
+                <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-navy/10">
+                  {resource.image && (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={resource.image}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                    </>
+                  )}
+                  <div className="absolute left-3 top-3 z-10 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                    <FileText className="text-white h-5 w-5" />
                   </div>
-                )}
-                <CardContent className="p-6 relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center group-hover:bg-gold/10 transition-colors">
-                      <FileText className="text-navy group-hover:text-gold h-5 w-5 transition-colors" />
-                    </div>
+                  <div className="absolute right-3 top-3 z-10">
                     <Badge variant="secondary">{resource.format}</Badge>
                   </div>
+                </div>
+                <CardContent className="p-6 border-t border-gray-100 bg-white">
                   <Badge variant="outline" className="mb-3 text-xs">
                     {resource.category}
                   </Badge>

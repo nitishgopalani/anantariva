@@ -365,7 +365,7 @@ export default function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-white/80" />
+          <div className="absolute inset-0 bg-white/58" />
         </div>
         <div className="relative z-10">
         <SectionHeader
@@ -382,7 +382,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card className="h-full bg-white/85 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-6">
                   <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name={category.icon} className="text-gold" size={28} />

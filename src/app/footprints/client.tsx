@@ -195,29 +195,33 @@ export function FootprintsPageClient() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div className="absolute inset-0 z-0">
+              <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 group p-0 border border-gray-200">
+                {/* Image band + icon centered on image */}
+                <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-navy/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={element.image}
-                    alt={element.title}
-                    className="w-full h-full object-cover"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-white/35" aria-hidden />
-                </div>
-                <CardContent className="p-6 md:p-8 relative z-10">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gold/25 transition-colors">
-                    <Icon
-                      name={element.icon}
-                      className="text-white group-hover:text-gold transition-colors"
-                      size={24}
-                    />
+                  <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <div className="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-white/25 backdrop-blur-sm border border-white/30 flex items-center justify-center shadow-lg group-hover:bg-white/35 transition-colors">
+                      <Icon
+                        name={element.icon}
+                        className="text-white group-hover:text-gold transition-colors"
+                        size={28}
+                      />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                </div>
+                {/* Text below image */}
+                <CardContent className="p-6 md:p-8 flex-1 bg-white">
+                  <h3 className="text-xl font-semibold text-navy mb-3">
                     {element.title}
                   </h3>
-                  <p className="text-white/90 leading-relaxed text-sm">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {element.description}
                   </p>
                 </CardContent>

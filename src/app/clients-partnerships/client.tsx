@@ -156,28 +156,32 @@ export function ClientsPageClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative overflow-hidden rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
             >
-              {model.image && (
-                <div className="absolute inset-0 z-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={model.image}
-                    alt={model.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-white/58" aria-hidden />
-                </div>
-              )}
-              <div className="relative z-10">
-                <div className="w-10 h-10 bg-navy text-white rounded-lg flex items-center justify-center mb-4 text-lg font-bold">
+              {/* Image band — number badge stays top-left on image only */}
+              <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-navy/10">
+                {model.image && (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={model.image}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-white/45" aria-hidden />
+                  </>
+                )}
+                <div className="absolute left-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-lg font-bold text-white shadow-md">
                   {index + 1}
                 </div>
+              </div>
+              {/* Title + description below image */}
+              <div className="border-t border-gray-100 bg-white px-6 py-6 md:px-8 md:py-7">
                 <h3 className="text-lg font-semibold text-navy mb-2">
                   {model.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   {model.description}
                 </p>
               </div>

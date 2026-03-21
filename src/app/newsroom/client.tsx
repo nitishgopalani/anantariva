@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Download } from "lucide-react";
 import { Section } from "@/components/layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Icon, CTASection } from "@/components/shared";
@@ -87,34 +87,48 @@ export function NewsroomPageClient() {
                 </div>
               </div>
               <div className="grid md:grid-cols-2 gap-4">
-                {section.items.map((item, itemIndex) => (
+                {section.items.map((item) => (
                   <Card
                     key={item.title}
-                    className="hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                    className="group flex flex-col overflow-hidden border border-gray-200 bg-white p-0 shadow-sm transition-all duration-300 hover:shadow-lg"
                   >
-                    {item.image && (
-                      <div className="absolute inset-0 z-0">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-white/70" aria-hidden />
+                    {/* Image + centered section icon */}
+                    <div className="relative aspect-[16/8] w-full shrink-0 overflow-hidden bg-navy/10">
+                      {item.image && (
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.image}
+                            alt=""
+                            className="absolute inset-0 h-full w-full object-cover"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                        </>
+                      )}
+                      <div className="absolute inset-0 flex items-center justify-center p-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/30 bg-white/25 shadow-lg backdrop-blur-sm transition-colors group-hover:bg-white/35 md:h-16 md:w-16">
+                          <Icon
+                            name={section.icon}
+                            className="text-white"
+                            size={28}
+                          />
+                        </div>
                       </div>
-                    )}
-                    <CardContent className="p-6 relative z-10">
-                      <div className="flex items-start justify-between gap-4 mb-3">
+                    </div>
+                    <CardContent className="flex-1 border-t border-gray-100 bg-white p-6">
+                      <div className="mb-3 flex items-start justify-between gap-4">
                         <Badge variant="secondary" className="text-xs">
                           {item.type}
                         </Badge>
-                        <span className="text-xs text-gray-400">{item.date}</span>
+                        <span className="shrink-0 text-xs text-gray-400">
+                          {item.date}
+                        </span>
                       </div>
-                      <h3 className="font-semibold text-navy mb-2 line-clamp-2">
+                      <h3 className="mb-2 line-clamp-2 font-semibold text-navy">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-gray-600 line-clamp-2">
+                      <p className="line-clamp-3 text-sm text-gray-600">
                         {item.excerpt}
                       </p>
                     </CardContent>
@@ -135,35 +149,43 @@ export function NewsroomPageClient() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full relative overflow-hidden">
-              <div className="absolute inset-0 z-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Insights/Media%20Inquiries/Media%20Inquiries.jpg"
-                  alt="Media Inquiries"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-white/45" aria-hidden />
-              </div>
-              <CardContent className="p-8 relative z-10">
-                <div className="w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center mb-6">
-                  <Mail className="text-white h-7 w-7" />
+            <Card className="group flex h-full flex-col overflow-hidden border border-gray-200 bg-white p-0 shadow-sm transition-all duration-300 hover:shadow-lg">
+              <div className="relative aspect-[16/8] w-full shrink-0 overflow-hidden bg-navy/10">
+                <picture className="absolute inset-0 block h-full w-full">
+                  <source
+                    srcSet="/Insights/Media%20Inquiries/Media%20Inquiries.jpg"
+                    type="image/jpeg"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Insights/Media%20Inquiries/Media%20Inquiries.jpg"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/30 bg-white/25 shadow-lg backdrop-blur-sm transition-colors group-hover:bg-white/35">
+                    <Mail className="h-8 w-8 text-white" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+              </div>
+              <CardContent className="flex-1 border-t border-gray-100 bg-white p-8">
+                <h3 className="mb-4 text-xl font-bold text-navy">
                   {newsroomContent.mediaContact.title}
                 </h3>
-                <p className="text-white/90 mb-6">
+                <p className="mb-6 text-gray-600">
                   {newsroomContent.mediaContact.description}
                 </p>
                 <a
                   href={`mailto:${newsroomContent.mediaContact.email}`}
-                  className="inline-flex items-center text-gold hover:text-gold-light font-medium"
+                  className="inline-flex items-center font-medium text-navy hover:text-gold"
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   {newsroomContent.mediaContact.email}
                 </a>
-                <p className="text-sm text-white/80 mt-4">
+                <p className="mt-4 text-sm text-gray-500">
                   {newsroomContent.mediaContact.note}
                 </p>
               </CardContent>
@@ -176,41 +198,53 @@ export function NewsroomPageClient() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full bg-navy text-white relative overflow-hidden">
-              <div className="absolute inset-0 z-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Insights/Media%20Inquiries/Press%20Kit.jpg"
-                  alt="Press Kit"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-navy/60" aria-hidden />
-              </div>
-              <CardContent className="p-8 relative z-10">
-                <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6">
-                  <Download className="text-gold h-7 w-7" />
+            <Card className="group flex h-full flex-col overflow-hidden border border-gray-200 bg-white p-0 shadow-sm transition-all duration-300 hover:shadow-lg">
+              <div className="relative aspect-[16/8] w-full shrink-0 overflow-hidden bg-navy/10">
+                <picture className="absolute inset-0 block h-full w-full">
+                  <source
+                    srcSet="/Insights/Media%20Inquiries/Press%20Kit.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcSet="/Insights/Media%20Inquiries/Press%20Kit.jpg"
+                    type="image/jpeg"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Insights/Media%20Inquiries/Press%20Kit.webp"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-navy/35" aria-hidden />
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/30 bg-white/25 shadow-lg backdrop-blur-sm transition-colors group-hover:bg-white/35">
+                    <Download className="h-8 w-8 text-gold" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-4">
+              </div>
+              <CardContent className="flex-1 border-t border-gray-100 bg-white p-8">
+                <h3 className="mb-4 text-xl font-bold text-navy">
                   {newsroomContent.pressKit.title}
                 </h3>
-                <p className="text-gray-300 mb-6">
+                <p className="mb-6 text-gray-600">
                   {newsroomContent.pressKit.description}
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="mb-6 space-y-3">
                   {newsroomContent.pressKit.items.map((item) => (
                     <div
                       key={item.name}
-                      className="flex items-center justify-between py-2 border-b border-white/10"
+                      className="flex items-center justify-between border-b border-gray-100 py-2"
                     >
-                      <span className="text-sm">{item.name}</span>
-                      <Badge variant="outline" className="border-white/30 text-white">
+                      <span className="text-sm text-gray-700">{item.name}</span>
+                      <Badge variant="outline" className="border-gray-200 text-navy">
                         {item.format}
                       </Badge>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-500">
                   {newsroomContent.pressKit.note}
                 </p>
               </CardContent>
