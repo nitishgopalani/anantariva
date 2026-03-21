@@ -100,25 +100,25 @@ export const clientsContent = {
         title: "Project-Based Engagement",
         description:
           "Defined scope, deliverables, and timeline for specific consulting or assessment needs.",
-        image: "/Partnership%20Models/Project-Based%20Engagement.jpg",
+        image: "/Partnership%20Models/pm1_project_based.png",
       },
       {
         title: "Retainer Advisory",
         description:
           "Ongoing access to expertise for continuous support, guidance, and emerging challenges.",
-        image: "/Partnership%20Models/Retainer%20Advisory.jpg",
+        image: "/Partnership%20Models/pm2_retainer.png",
       },
       {
         title: "Consortium Partnerships",
         description:
           "Collaborative arrangements for large-scale programs requiring multi-disciplinary expertise.",
-        image: "/Partnership%20Models/Consortium%20Partnerships.jpg",
+        image: "/Partnership%20Models/pm3_consortium.png",
       },
       {
         title: "Capacity Building Programs",
         description:
           "Long-term partnerships focused on institutional strengthening and knowledge transfer.",
-        image: "/Partnership%20Models/Capacity%20Building%20Programs.jpg",
+        image: "/Partnership%20Models/pm4_capacity.png",
       },
     ],
   },

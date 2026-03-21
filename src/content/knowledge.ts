@@ -51,7 +51,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: true,
       publishedAt: "2024-01",
-      image: "/Knowledge%20Repository/ESG%20Reporting%20Framework%20Guid.jpg",
+      image: "/Knowledge%20Repository/ESG%20Reporting%20Framework%20Guide.jpg",
     },
     {
       id: "2",
@@ -103,7 +103,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2024-01",
-      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Supply%20Chain%20Due%20Diligence%20Toolkit.jpg",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Supply%20Chain%20Due%20Diligence%20Toolkit.webp",
     },
     {
       id: "6",
@@ -116,7 +116,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2023-12",
-      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Climate%20Policy%20Landscape%20India.jpg",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/Climate%20Policy%20Landscape%20India.avif",
     },
     {
       id: "7",
@@ -129,7 +129,7 @@ export const knowledgeContent = {
       downloadable: true,
       featured: false,
       publishedAt: "2024-01",
-      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/M%26E%20Framework%20Design%20Guide.jpg",
+      image: "/Knowledge%20Repository/Knowlagebase_all_image%20down/M%26E%20Framework%20Design%20Guide.png",
     },
     {
       id: "8",

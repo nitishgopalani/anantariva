@@ -27,11 +27,15 @@ export function PageHeader({
     >
       {/* Optional full-bleed background image */}
       {backgroundImage && (
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: `url("${backgroundImage}")` }}
-          aria-hidden
-        />
+        <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={backgroundImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-55"
+          />
+          <div className="absolute inset-0 bg-navy/55" />
+        </div>
       )}
 
       {/* Background Pattern */}

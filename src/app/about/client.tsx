@@ -64,19 +64,26 @@ export function AboutPageClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full relative overflow-hidden">
-              {/* Full-size mission background */}
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-20"
-                aria-hidden
-                style={{
-                  backgroundImage: "url('/vision/mision.png')",
-                }}
-              />
-              <CardContent className="p-8 relative z-10">
-                <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6">
-                  <Icon name="Target" className="text-navy" size={28} />
+            <Card className="h-full flex flex-col overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 group p-0">
+              <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-navy/10">
+                <picture className="absolute inset-0 block h-full w-full">
+                  <source srcSet="/vision/mision.jpg" type="image/jpeg" />
+                  <source srcSet="/vision/mision.png" type="image/png" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/vision/mision.jpg"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-white/25 backdrop-blur-sm border border-white/30 flex items-center justify-center shadow-lg group-hover:bg-white/35 transition-colors">
+                    <Icon name="Target" className="text-white" size={28} />
+                  </div>
                 </div>
+              </div>
+              <CardContent className="p-6 md:p-8 flex-1 bg-white">
                 <h3 className="text-2xl font-bold text-navy mb-4">
                   {aboutContent.mission.title}
                 </h3>
@@ -95,19 +102,22 @@ export function AboutPageClient() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <Card className="h-full relative overflow-hidden">
-              {/* Full-size purpose background */}
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-15"
-                aria-hidden
-                style={{
-                  backgroundImage: "url('/vision/Our%20Purpose.png')",
-                }}
-              />
-              <CardContent className="p-8 relative z-10">
-                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6">
-                  <Icon name="Compass" className="text-gold" size={28} />
+            <Card className="h-full flex flex-col overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 group p-0">
+              <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-navy/10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/vision/Our%20Purpose.png"
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-white/25 backdrop-blur-sm border border-white/30 flex items-center justify-center shadow-lg group-hover:bg-white/35 transition-colors">
+                    <Icon name="Compass" className="text-gold" size={28} />
+                  </div>
                 </div>
+              </div>
+              <CardContent className="p-6 md:p-8 flex-1 bg-white">
                 <h3 className="text-2xl font-bold text-navy mb-4">
                   {aboutContent.purpose.title}
                 </h3>
@@ -146,22 +156,24 @@ export function AboutPageClient() {
       </Section>
 
       {/* Operating Principles */}
-      <Section variant="navy" className="relative">
+      <Section variant="navy" className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/opration_princple/opration%20princple.png"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-55"
+          />
+          <div className="absolute inset-0 bg-navy/70" />
+        </div>
         <SectionHeader
+          className="relative z-10"
           subtitle="How We Work"
           title="Operating Principles"
           description="The standards that govern our professional conduct and ensure the integrity of our work."
           light
         />
-        {/* Full-size background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-15"
-          aria-hidden
-          style={{
-            backgroundImage: "url('/opration_princple/opration%20princple.png')",
-          }}
-        />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="relative z-10 grid md:grid-cols-2 gap-6">
           {aboutContent.operatingPrinciples.map((principle, index) => (
             <motion.div
               key={principle.title}
@@ -238,25 +250,33 @@ export function AboutPageClient() {
             ].map((item, index) => (
               <div
                 key={item.label}
-                className="bg-gray-50 rounded-2xl p-6 text-center relative overflow-hidden"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white text-center shadow-sm transition-all duration-300 hover:shadow-lg"
               >
-                <div className="absolute inset-0">
+                {/* Image + centered icon */}
+                <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-navy/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
-                    alt={item.label}
-                    className="w-full h-full object-cover"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
                     loading="lazy"
                   />
-                  {/* Content readability */}
-                  <div className="absolute inset-0 bg-white/55" aria-hidden />
-                </div>
-
-                <div className="relative z-10">
-                  <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Icon name={item.icon} className="text-navy" size={24} />
+                  <div className="absolute inset-0 bg-navy/25" aria-hidden />
+                  <div className="absolute inset-0 flex items-center justify-center p-3">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/30 bg-white/25 shadow-lg backdrop-blur-sm transition-colors group-hover:bg-white/35 md:h-16 md:w-16">
+                      <Icon
+                        name={item.icon}
+                        className="text-white"
+                        size={26}
+                      />
+                    </div>
                   </div>
-                  <span className="text-navy font-medium text-sm">{item.label}</span>
+                </div>
+                {/* Label below image */}
+                <div className="border-t border-gray-100 bg-white px-4 py-4">
+                  <span className="text-sm font-semibold text-navy md:text-base">
+                    {item.label}
+                  </span>
                 </div>
               </div>
             ))}

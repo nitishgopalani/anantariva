@@ -177,7 +177,7 @@ export function InsightDetailClient({
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-white/72" aria-hidden />
+                        <div className="absolute inset-0 bg-white/55" aria-hidden />
                       </div>
                     )}
                     <CardContent className="p-6 relative z-10">
