@@ -82,39 +82,50 @@ export function ServicesPageClient() {
             >
               <Card className="overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-0">
-                  <div className="grid lg:grid-cols-3 gap-0">
-                    {/* Header Area — matches home navy hero accents */}
-                    <div className="relative bg-gradient-to-br from-navy to-navy-light p-6 md:p-8 lg:p-10 text-white lg:rounded-l-2xl overflow-hidden">
-                      {industry.image && (
-                        <div className="absolute inset-0 z-0">
+                  <div className="grid gap-0 lg:grid-cols-3 lg:items-stretch">
+                    {/* Left: image + text overlay (compact) — 10 cards */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-navy to-navy-light text-white lg:aspect-auto lg:min-h-[220px] lg:h-full lg:rounded-l-2xl">
+                      {industry.image ? (
+                        <>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={industry.image}
-                            alt={industry.title}
-                            className="w-full h-full object-cover"
+                            alt=""
+                            className="absolute inset-0 h-full w-full object-cover"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-navy/65" aria-hidden />
+                          {/* Readability: dark band neeche + halka top */}
+                          <div
+                            className="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/25"
+                            aria-hidden
+                          />
+                        </>
+                      ) : (
+                        <div
+                          className="absolute inset-0 bg-gradient-to-br from-navy to-navy-light"
+                          aria-hidden
+                        />
+                      )}
+                      <div className="relative z-10 flex h-full flex-col justify-end p-5 md:p-6 lg:p-7">
+                        <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/15 backdrop-blur-[2px] md:h-12 md:w-12 md:rounded-xl">
+                          <Icon name={industry.icon} className="text-gold" size={24} />
                         </div>
-                      )}
-                      <div className="relative z-10">
-                      <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6">
-                        <Icon name={industry.icon} className="text-gold" size={28} />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-2">{industry.title}</h3>
-                      {industry.subtitle && (
-                        <p className="text-gold text-sm font-medium mb-4">
-                          {industry.subtitle}
+                        <h3 className="mb-1 text-lg font-bold leading-snug md:text-xl">
+                          {industry.title}
+                        </h3>
+                        {industry.subtitle && (
+                          <p className="mb-2 text-xs font-medium text-gold md:text-sm">
+                            {industry.subtitle}
+                          </p>
+                        )}
+                        <p className="line-clamp-4 text-xs leading-relaxed text-white/95 md:text-sm">
+                          {industry.focus}
                         </p>
-                      )}
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {industry.focus}
-                      </p>
                       </div>
                     </div>
 
-                    {/* Content Area — same padding rhythm as home Service Highlights */}
-                    <div className="lg:col-span-2 p-6 md:p-8">
+                    {/* Right: Who it&apos;s for + deliverables */}
+                    <div className="border-t border-gray-100 lg:col-span-2 lg:border-l lg:border-t-0 lg:rounded-r-2xl p-6 md:p-8">
                       <div className="mb-6">
                         <h4 className="text-sm font-semibold text-navy uppercase tracking-wider mb-3">
                           Who It&apos;s For
