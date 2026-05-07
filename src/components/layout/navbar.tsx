@@ -24,6 +24,7 @@ declare global {
 }
 
 const GOOGLE_COOKIE_KEY = "googtrans";
+type LanguageCode = "EN" | "HI" | "ES" | "AR" | "FR";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,17 +32,93 @@ export function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>("EN");
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const pendingLanguageRef = useRef<"EN" | "HI" | null>(null);
+  const pendingLanguageRef = useRef<LanguageCode | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  const languageOptions = [
-    { code: "EN", label: "English" },
-    { code: "HI", label: "Hindi" },
+  const languageOptions: Array<{ code: LanguageCode; label: string; googleCode: string; flag: string }> = [
+    { code: "EN", label: "English", googleCode: "en", flag: "🇺🇸" },
+    { code: "HI", label: "Hindi", googleCode: "hi", flag: "🇮🇳" },
+    { code: "ES", label: "Spanish", googleCode: "es", flag: "🇪🇸" },
+    { code: "AR", label: "Arabic", googleCode: "ar", flag: "🇸🇦" },
+    { code: "FR", label: "French", googleCode: "fr", flag: "🇫🇷" },
   ];
+
+  const FlagIcon = ({ code }: { code: LanguageCode }) => {
+    const base = "h-4 w-6 shrink-0 rounded-sm overflow-hidden";
+    switch (code) {
+      case "EN":
+        // US (simple stripes + blue canton)
+        return (
+          <svg
+            className={base}
+            viewBox="0 0 24 16"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="US flag"
+          >
+            <rect width="24" height="16" fill="#FFFFFF" />
+            {Array.from({ length: 7 }).map((_, i) => (
+              <rect
+                key={i}
+                x="0"
+                y={i * 16 / 7}
+                width="24"
+                height={16 / 14}
+                fill={i % 2 === 0 ? "#B22234" : "#FFFFFF"}
+              />
+            ))}
+            <rect width="12" height="8" fill="#3C3B6E" />
+          </svg>
+        );
+      case "HI":
+        // India (saffron/white/green + simple blue wheel)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="India flag">
+            <rect width="24" height="16" fill="#FFFFFF" />
+            <rect width="24" height="5.33" fill="#FF9933" />
+            <rect y="10.67" width="24" height="5.33" fill="#138808" />
+            <circle cx="12" cy="8" r="2.3" fill="none" stroke="#000080" strokeWidth="1.2" />
+            <circle cx="12" cy="8" r="1.2" fill="#000080" />
+          </svg>
+        );
+      case "ES":
+        // Spain (red-yellow-red)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spain flag">
+            <rect width="24" height="16" fill="#AA151B" />
+            <rect y="5.333" width="24" height="5.333" fill="#F1BF00" />
+            <rect y="10.666" width="24" height="5.333" fill="#AA151B" />
+          </svg>
+        );
+      case "AR":
+        // Saudi Arabia (green + simple emblem approximation)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Saudi flag">
+            <rect width="24" height="16" fill="#007A3D" />
+            <rect x="1" y="1" width="22" height="3" fill="#FFFFFF" opacity="0.15" />
+            <rect x="1" y="12" width="22" height="3" fill="#FFFFFF" opacity="0.15" />
+            <circle cx="12" cy="8" r="2.2" fill="none" stroke="#FFFFFF" strokeWidth="1.1" opacity="0.9" />
+          </svg>
+        );
+      case "FR":
+        // France (blue-white-red vertical)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="France flag">
+            <rect width="8" height="16" fill="#0055A4" />
+            <rect x="8" width="8" height="16" fill="#FFFFFF" />
+            <rect x="16" width="8" height="16" fill="#EF4135" />
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+  const activeLanguage =
+    languageOptions.find((option) => option.code === selectedLanguage) || languageOptions[0];
 
   const searchItems = [
     { label: "Home", href: "/" },
@@ -74,10 +151,10 @@ export function Navbar() {
     router.push(href);
   };
 
-  const applyGoogleLanguage = (code: "EN" | "HI") => {
+  const applyGoogleLanguage = (code: LanguageCode) => {
     if (typeof window === "undefined") return;
 
-    const target = code === "HI" ? "hi" : "en";
+    const target = languageOptions.find((option) => option.code === code)?.googleCode || "en";
     const cookieValue = `/auto/${target}`;
     document.documentElement.lang = target;
     document.cookie = `${GOOGLE_COOKIE_KEY}=${cookieValue}; path=/; max-age=31536000`;
@@ -144,13 +221,13 @@ export function Navbar() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,hi",
+          includedLanguages: "en,hi,es,ar,fr",
           autoDisplay: false,
         },
         "google_translate_element"
       );
 
-      const currentLanguage: "EN" | "HI" = "EN";
+      const currentLanguage: LanguageCode = "EN";
       pendingLanguageRef.current = currentLanguage;
 
       let attempts = 0;
@@ -176,15 +253,14 @@ export function Navbar() {
       script.async = true;
       document.body.appendChild(script);
     } else if (window.google?.translate?.TranslateElement) {
-      const fallbackLanguage: "EN" | "HI" = "EN";
+      const fallbackLanguage: LanguageCode = "EN";
       pendingLanguageRef.current = fallbackLanguage;
       window.setTimeout(() => applyGoogleLanguage(fallbackLanguage), 0);
     }
   }, []);
 
   useEffect(() => {
-    const current = selectedLanguage === "HI" ? "HI" : "EN";
-    window.setTimeout(() => applyGoogleLanguage(current), 50);
+    window.setTimeout(() => applyGoogleLanguage(selectedLanguage), 50);
   }, [pathname, selectedLanguage]);
 
   useEffect(() => {
@@ -241,7 +317,7 @@ export function Navbar() {
                     >
                       <button
                         className={cn(
-                          "flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-lg",
+                          "flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-lg whitespace-nowrap",
                           openDropdown === item.name
                             ? "text-navy bg-gray-50"
                             : "text-gray-600 hover:text-navy hover:bg-gray-50"
@@ -288,7 +364,7 @@ export function Navbar() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "px-4 py-2 text-sm font-medium transition-colors rounded-lg",
+                        "px-4 py-2 text-sm font-medium transition-colors rounded-lg whitespace-nowrap",
                         pathname === item.href
                           ? "text-navy bg-gray-50"
                           : "text-gray-600 hover:text-navy hover:bg-gray-50"
@@ -318,8 +394,10 @@ export function Navbar() {
                   className="flex items-center gap-2 text-gray-600 hover:text-navy transition-colors px-2 py-1.5 rounded-lg hover:bg-gray-50"
                   aria-label="Language"
                 >
-                  <Globe className="h-5 w-5 flex-shrink-0" strokeWidth={1.5} />
-                  <span className="text-sm font-medium">{`GLOBAL - ${selectedLanguage}`}</span>
+                  <span className="inline-flex items-center gap-2">
+                    <FlagIcon code={activeLanguage.code} />
+                    <span className="text-sm font-medium">{activeLanguage.label}</span>
+                  </span>
                   <ChevronDown className={cn("h-4 w-4 transition-transform", languageOpen && "rotate-180")} />
                 </button>
                 <AnimatePresence>
@@ -336,7 +414,7 @@ export function Navbar() {
                           onMouseDown={(e) => {
                             e.preventDefault();
                             setSelectedLanguage(option.code);
-                            applyGoogleLanguage(option.code as "EN" | "HI");
+                            applyGoogleLanguage(option.code);
                             setLanguageOpen(false);
                           }}
                           className={cn(
@@ -346,7 +424,10 @@ export function Navbar() {
                               : "text-gray-600"
                           )}
                         >
-                          {option.label}
+                          <span className="inline-flex items-center gap-2">
+                            <FlagIcon code={option.code} />
+                            <span>{option.label}</span>
+                          </span>
                         </button>
                       ))}
                     </motion.div>
@@ -354,7 +435,7 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
               <Button variant="gold" asChild>
-                <Link href="/contact">{siteConfig.ctas.primary}</Link>
+                <Link href="/about">{siteConfig.ctas.primary}</Link>
               </Button>
             </div>
 

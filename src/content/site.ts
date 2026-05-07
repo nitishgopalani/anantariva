@@ -27,7 +27,6 @@ export const siteConfig = {
 
 export const navigation = {
   main: [
-    { name: "Home", href: "/" },
     {
       name: "Company",
       href: "#",
@@ -38,7 +37,7 @@ export const navigation = {
       ],
     },
     { name: "Services", href: "/services" },
-    { name: "Clients & Partnerships", href: "/clients-partnerships" },
+    { name: "Partnerships & Clients", href: "/clients-partnerships" },
     {
       name: "Resources",
       href: "#",

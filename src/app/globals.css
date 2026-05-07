@@ -168,6 +168,14 @@ iframe[id*=":"] {
   display: none !important;
 }
 
+/* Hide Google translate dropdown (we use our own selector in Navbar) */
+.goog-te-combo,
+.goog-te-combo-container,
+.goog-te-gadget,
+.goog-te-gadget-simple {
+  display: none !important;
+}
+
 body {
   top: 0 !important;
 }
