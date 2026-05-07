@@ -76,7 +76,7 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button variant="gold" size="xl" asChild>
-                <Link href="/contact">
+                <Link href="/about">
                   {homeContent.hero.primaryCta}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -410,8 +410,9 @@ export default function HomePage() {
       <CTASection
         title="Ready to Start Your Sustainability Journey?"
         description="Partner with Anantariva for independent assurance, strategic guidance, and measurable impact aligned with global standards."
-        primaryButton={{ text: "Know More", href: "/contact" }}
+        primaryButton={{ text: "Know More", href: "/about" }}
         secondaryButton={{ text: "Explore Services", href: "/services" }}
+        backgroundVideo="/video/istockphoto-1276654184-640_adpp_is.mp4"
       />
     </>
   );
