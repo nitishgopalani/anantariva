@@ -198,7 +198,7 @@ export default function HomePage() {
       <Section variant="navy" className="relative overflow-hidden">
         <div className="absolute inset-0" aria-hidden>
           <video
-            src="/video/istockphoto-1160868560-640_adpp_is.mp4"
+            src="/video/istockphoto-116-640_adpp_is.mp4"
             autoPlay
             loop
             muted
