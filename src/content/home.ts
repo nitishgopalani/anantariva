@@ -2,13 +2,13 @@ export const homeContent = {
   hero: {
     headline: "Independent Assurance. Sustainable Strategy. Measurable Impact.",
     subtext:
-      "In an era of regulatory complexity, climate urgency, and evolving responsible value chains, organizations need partners who combine global expertise with deep local insight. Anantariva delivers credible, science-based solutions with the agility of a focused consultancy and the rigor of established standards.",
+      "In an era of business complexities, ever increasing regulatory and quality infrastructure challenges, climate urgency, and evolving responsible value chains, businesses & organizations need partners who combine global expertise with deep local insight. Anantariva delivers credible, science-based solutions with the agility of a focused consultancy meeting the rigor of established standards.",
     primaryCta: "Know More",
     secondaryCta: "Explore Services",
     backgroundAlt: "Abstract globe pattern representing global reach",
   },
   startupAgility: {
-    title: "Startup Agility. Global Expertise.",
+    title: "Business Agility. Global Expertise.",
     subtitle: "The best of both worlds",
     description:
       "We bring together a powerful expert network spanning global technical insights, cross-sector experience, regulatory and accreditation knowledge, field implementation capabilities, and policy & institution advisory.",
@@ -29,27 +29,34 @@ export const homeContent = {
         image: "/img_of_Startup_Agility/img3_regulatory.png",
       },
       {
+        title: "Policy Advisory",
+        description: "Key policy & strategic guidance with action plans to industry, government, and other stakeholders",
+        image: "/img_of_Startup_Agility/img5_policy_advisory.png",
+      },
+      {
         title: "Field Implementation",
         description: "Practical, ground-level experience turning strategy into measurable outcomes",
         image: "/img_of_Startup_Agility/img4_field_implementation.png",
       },
       {
-        title: "Policy Advisory",
-        description: "Strategic guidance at the intersection of industry, government, and development",
-        image: "/img_of_Startup_Agility/img5_policy_advisory.png",
+        title: "Capacity Building",
+        description: "Consulting, training, gap assessment, hand-holding, and other technical & management services for industry, businesses and other stakeholders",
+        image: "/img_of_Startup_Agility/img4_field_implementation.png",
       },
     ],
   },
   globalVoice: {
     title: "A Global Voice for Responsible Growth",
     description:
-      "Rooted in the Indian subcontinent with a truly global outlook. We partner with industry leaders, government bodies, development agencies, SMEs, farmer collectives, and institutions committed to sustainable transformation.",
+      "We partner with industry leaders, businesses, government bodies, development agencies, SMEs, farmer collectives, other cooperatives, and institutions committed to sustainable transformation. Rooted in the Indian subcontinent with a truly global outlook.",
     partners: [
       "Industry Leaders",
+      "Businesses",
       "Government Bodies",
       "Development Agencies",
       "SMEs & Startups",
       "Farmer Collectives",
+      "Other Cooperatives",
       "Academic Institutions",
     ],
   },
@@ -58,16 +65,16 @@ export const homeContent = {
     etymology:
       "Derived from the Sanskrit 'Anantara'—meaning endless continuum—our name embodies our commitment to sustained impact and responsible stewardship across generations.",
     coreFocus: [
-      { name: "Assurance & Monitoring", icon: "Shield" },
+      { name: "Assurance & Compliance", icon: "Shield" },
       { name: "Agriculture & Food Systems", icon: "Wheat" },
       { name: "Natural Resource Management", icon: "TreePine" },
       { name: "Climate & Environment", icon: "Cloud" },
       { name: "Certification & Compliance", icon: "Award" },
       { name: "Policy & Advisory", icon: "Scale" },
-      { name: "Project & Programme Advisory", icon: "Target" },
+      { name: "Projects & Programmes", icon: "Target" },
       { name: "Enterprise Solutions", icon: "Building2" },
       { name: "Research and Innovations", icon: "Microscope" },
-      { name: "Consultancy for Accreditation & Certification", icon: "FileCheck" },
+      { name: "Accreditation, Certification, Inspection & Testing Consultancy", icon: "FileCheck" },
     ],
   },
   whyAnantariva: {
@@ -108,7 +115,7 @@ export const homeContent = {
   },
   serviceHighlights: [
     {
-      title: "Assurance & Monitoring",
+      title: "Assurance & Compliance",
       description: "Independent verification and ongoing monitoring to ensure compliance and performance",
       href: "/services#assurance",
       icon: "Shield",
@@ -123,7 +130,7 @@ export const homeContent = {
     },
     {
       title: "M&E Solutions",
-      description: "Robust monitoring and evaluation frameworks for development programs",
+      description: "Project programme conceptualization, with robust monitoring and evaluation frameworks, and implementation",
       href: "/services#me",
       icon: "BarChart3",
       image: "/Our%20_Service_Offerings/service_3_me_solutions.png",
@@ -144,15 +151,15 @@ export const homeContent = {
     },
     {
       title: "Policy & Strategic Advisory",
-      description: "Expert counsel at the intersection of policy, regulation, and implementation",
+      description: "Expert counsel on business & policy matters, regulations, quality & other technical matters.",
       href: "/services#policy",
       icon: "Scale",
       image: "/Our%20_Service_Offerings/service_6_policy.png",
     },
   ],
   serviceOfferings: {
-    title: "Our Wide Range of Service Offerings",
-    subtitle: "Section of Offerings",
+    title: "Policy, Strategy, Action Plans, Implementation, Technical Expertise",
+    subtitle: "Our Core Expertise & Strengths",
     description:
       "Four strategic pillars: Corporate & Growth Strategy, Transaction Strategy & Execution, Supply Chain & Transformation, and Customer Experience.",
     categories: [

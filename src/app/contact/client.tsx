@@ -357,7 +357,7 @@ export function ContactPageClient() {
             </div>
 
             {/* Strategic Engagement */}
-            <Card className="bg-navy text-white">
+            <Card className="bg-[#00008B] text-white">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold mb-2">
                   {contactContent.strategicEngagement.title}
@@ -370,7 +370,7 @@ export function ContactPageClient() {
                   className="w-full border-white text-white hover:bg-white hover:text-navy"
                   asChild
                 >
-                  <a href="mailto:investors@anantariva.com">
+                  <a href="mailto:director@anantariva.com">
                     {contactContent.strategicEngagement.cta}
                   </a>
                 </Button>

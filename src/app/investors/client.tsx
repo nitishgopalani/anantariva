@@ -61,6 +61,16 @@ export function InvestorsPageClient() {
                 {investorsContent.hero.description}
               </motion.p>
             )}
+            {investorsContent.hero.note && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-base md:text-lg text-gold/90 italic leading-relaxed max-w-3xl mt-4"
+              >
+                {investorsContent.hero.note}
+              </motion.p>
+            )}
           </motion.div>
         </div>
       </section>

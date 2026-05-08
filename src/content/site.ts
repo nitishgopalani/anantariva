@@ -11,7 +11,7 @@ export const siteConfig = {
     general: "info@anantariva.com",
     careers: "careers@anantariva.com",
     media: "media@anantariva.com",
-    investors: "investors@anantariva.com",
+    investors: "director@anantariva.com",
   },
   social: {
     linkedin: "https://linkedin.com/company/anantariva",
@@ -28,7 +28,7 @@ export const siteConfig = {
 export const navigation = {
   main: [
     {
-      name: "Company",
+      name: "Our Company",
       href: "#",
       children: [
         { name: "About Us", href: "/about", description: "Our identity, mission, and values" },
@@ -37,7 +37,7 @@ export const navigation = {
       ],
     },
     { name: "Services", href: "/services" },
-    { name: "Partnerships & Clients", href: "/clients-partnerships" },
+    { name: "Partners & Clients", href: "/clients-partnerships" },
     {
       name: "Resources",
       href: "#",

@@ -117,7 +117,7 @@ export default function HomePage() {
           title={homeContent.startupAgility.title}
           description={homeContent.startupAgility.description}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {homeContent.startupAgility.features.map((feature, index) => (
             <FeatureCard
               key={feature.title}
@@ -126,13 +126,6 @@ export default function HomePage() {
               image={feature.image}
               variant="bordered"
               index={index}
-              className={
-                index === 3
-                  ? "lg:col-span-4 lg:col-start-3"
-                  : index === 4
-                    ? "lg:col-span-4 lg:col-start-7"
-                    : "lg:col-span-4"
-              }
             />
           ))}
         </div>
@@ -302,7 +295,7 @@ export default function HomePage() {
       <Section>
         <SectionHeader
           subtitle="What We Do"
-          title="Our Service Offerings"
+          title="Our Services"
           description="Comprehensive solutions designed to help organizations navigate complexity, achieve compliance, and drive sustainable growth."
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

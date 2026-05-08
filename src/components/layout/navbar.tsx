@@ -24,7 +24,7 @@ declare global {
 }
 
 const GOOGLE_COOKIE_KEY = "googtrans";
-type LanguageCode = "EN" | "HI" | "ES" | "AR" | "FR";
+type LanguageCode = "EN" | "HI" | "ES" | "AR" | "FR" | "RU" | "ZH";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,38 +40,36 @@ export function Navbar() {
   const router = useRouter();
 
   const languageOptions: Array<{ code: LanguageCode; label: string; googleCode: string; flag: string }> = [
-    { code: "EN", label: "English", googleCode: "en", flag: "🇺🇸" },
+    { code: "EN", label: "English", googleCode: "en", flag: "🇬🇧" },
     { code: "HI", label: "Hindi", googleCode: "hi", flag: "🇮🇳" },
     { code: "ES", label: "Spanish", googleCode: "es", flag: "🇪🇸" },
     { code: "AR", label: "Arabic", googleCode: "ar", flag: "🇸🇦" },
     { code: "FR", label: "French", googleCode: "fr", flag: "🇫🇷" },
+    { code: "RU", label: "Russian", googleCode: "ru", flag: "🇷🇺" },
+    { code: "ZH", label: "Chinese", googleCode: "zh-CN", flag: "🇨🇳" },
   ];
 
   const FlagIcon = ({ code }: { code: LanguageCode }) => {
     const base = "h-4 w-6 shrink-0 rounded-sm overflow-hidden";
     switch (code) {
       case "EN":
-        // US (simple stripes + blue canton)
+        // United Kingdom (Union Jack — simplified)
         return (
           <svg
             className={base}
-            viewBox="0 0 24 16"
+            viewBox="0 0 60 30"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="US flag"
+            aria-label="UK flag"
           >
-            <rect width="24" height="16" fill="#FFFFFF" />
-            {Array.from({ length: 7 }).map((_, i) => (
-              <rect
-                key={i}
-                x="0"
-                y={i * 16 / 7}
-                width="24"
-                height={16 / 14}
-                fill={i % 2 === 0 ? "#B22234" : "#FFFFFF"}
-              />
-            ))}
-            <rect width="12" height="8" fill="#3C3B6E" />
+            <clipPath id="ukClip"><rect width="60" height="30" /></clipPath>
+            <g clipPath="url(#ukClip)">
+              <rect width="60" height="30" fill="#012169" />
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" strokeWidth="6" />
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="3" />
+              <path d="M30,0 V30 M0,15 H60" stroke="#FFFFFF" strokeWidth="10" />
+              <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" />
+            </g>
           </svg>
         );
       case "HI":
@@ -113,6 +111,29 @@ export function Navbar() {
             <rect x="16" width="8" height="16" fill="#EF4135" />
           </svg>
         );
+      case "RU":
+        // Russia (white-blue-red horizontal)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Russia flag">
+            <rect width="24" height="5.333" fill="#FFFFFF" />
+            <rect y="5.333" width="24" height="5.333" fill="#0039A6" />
+            <rect y="10.666" width="24" height="5.334" fill="#D52B1E" />
+          </svg>
+        );
+      case "ZH":
+        // China (red with stylised stars)
+        return (
+          <svg className={base} viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="China flag">
+            <rect width="24" height="16" fill="#DE2910" />
+            <g fill="#FFDE00">
+              <circle cx="5" cy="5" r="1.6" />
+              <circle cx="9" cy="3" r="0.7" />
+              <circle cx="10.2" cy="5" r="0.7" />
+              <circle cx="10" cy="7.4" r="0.7" />
+              <circle cx="8.5" cy="8.6" r="0.7" />
+            </g>
+          </svg>
+        );
       default:
         return null;
     }
@@ -126,7 +147,7 @@ export function Navbar() {
     { label: "Our Team", href: "/about#experts" },
     { label: "Our Presence", href: "/footprints" },
     { label: "Services", href: "/services" },
-    { label: "Clients & Partnerships", href: "/clients-partnerships" },
+    { label: "Partners & Clients", href: "/clients-partnerships" },
     { label: "Insights", href: "/insights" },
     { label: "Newsroom", href: "/newsroom" },
     { label: "Knowledge Repository", href: "/knowledge" },
@@ -221,7 +242,7 @@ export function Navbar() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,hi,es,ar,fr",
+          includedLanguages: "en,hi,es,ar,fr,ru,zh-CN",
           autoDisplay: false,
         },
         "google_translate_element"

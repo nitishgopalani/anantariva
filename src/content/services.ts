@@ -1,7 +1,7 @@
 export const servicesContent = {
   hero: {
-    title: "Services & Industries",
-    subtitle: "Comprehensive solutions across sectors",
+    title: "Manufacturing & Services",
+    subtitle: "Comprehensive solutions across industry sectors",
     description:
       "We deliver end-to-end consulting, assurance, and advisory services designed to help organizations navigate complexity, achieve compliance, and drive sustainable growth.",
   },
