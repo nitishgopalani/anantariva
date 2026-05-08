@@ -68,9 +68,9 @@ export const contactContent = {
     subtitle: "Reach the right team",
     items: [
       {
-        title: "General Inquiries",
+        title: "General & Business Enquiries",
         email: "info@anantariva.com",
-        description: "For general questions about our services and capabilities",
+        description: "For general information and business enquiries about our services and capabilities",
         icon: "Mail",
       },
       {
@@ -87,7 +87,7 @@ export const contactContent = {
       },
       {
         title: "Investors",
-        email: "investors@anantariva.com",
+        email: "director@anantariva.com",
         description: "For investment inquiries and investor relations",
         icon: "TrendingUp",
       },

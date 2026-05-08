@@ -1,9 +1,9 @@
 export const clientsContent = {
   hero: {
-    title: "Clients & Partnerships",
+    title: "Partners & Clients",
     subtitle: "Building strategic collaborations for sustainable impact",
     description:
-      "As a newly established organization, we are actively building strategic collaborations with partners who share our commitment to transparency, sustainability, and measurable outcomes.",
+      "As a future-ready organization we are actively building strategic collaborations with partners who share our commitment to transparency, sustainability, and measurable outcomes.",
   },
   introduction: {
     title: "Partnership Philosophy",

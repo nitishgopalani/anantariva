@@ -1,9 +1,10 @@
 export const investorsContent = {
   hero: {
     title: "Investor Relations",
-    subtitle: "Building value at the intersection of sustainability and growth",
+    subtitle: "Enabling Relationships & Sustained Value Creation",
     description:
-      "Anantariva operates at the convergence of ESG transition, climate finance, certification ecosystems, AI-enabled compliance, and sustainable value chains—sectors poised for significant growth.",
+      "With a strong foundation built on technical expertise & consistent performance, we present an array of investment opportunities for potential growth across industry sectors. Discover our track record and diverse portfolio. We are open to hearing from Institutional as well as Individual investors, including technical professionals, who would like to partner with us.",
+    note: "Anantariva maintains a valuable relationship and trust with all our stakeholders by ensuring a transparent reporting system.",
   },
   positioning: {
     title: "Strategic Positioning",
@@ -99,7 +100,7 @@ export const investorsContent = {
     title: "Investor Engagement",
     description:
       "We welcome conversations with investors who share our vision of building a leading sustainability consulting and assurance practice.",
-    email: "investors@anantariva.com",
+    email: "director@anantariva.com",
     note: "For detailed discussions on investment opportunities and company performance, please reach out to our investor relations team.",
   },
   disclaimer: {
