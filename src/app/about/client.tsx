@@ -6,6 +6,7 @@ import { Section, SectionHeader } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icon, CTASection, FeatureCard } from "@/components/shared";
 import { aboutContent } from "@/content";
+import { cn } from "@/lib/utils";
 
 export function AboutPageClient() {
   return (
@@ -294,19 +295,22 @@ export function AboutPageClient() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {aboutContent.experts.team.map((expert, index) => (
             <motion.div
-              key={index}
+              key={expert.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full overflow-hidden group hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 overflow-hidden">
+                <div className="relative h-[280px] w-full shrink-0 overflow-hidden bg-gray-100 sm:h-[300px] md:h-[320px]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={expert.image}
-                    alt={expert.sector}
-                    className="w-full h-full object-cover"
+                    alt={expert.name}
+                    className={cn(
+                      "h-full w-full object-cover object-top",
+                      "imageClassName" in expert ? (expert as { imageClassName?: string }).imageClassName : undefined
+                    )}
                     loading="lazy"
                   />
                 </div>
@@ -328,7 +332,7 @@ export function AboutPageClient() {
         </div>
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm">
-            Expert profiles will be updated with actual team member information.
+            Our expert network continues to grow as we onboard additional specialists across sectors.
           </p>
         </div>
       </Section>

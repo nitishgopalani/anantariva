@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Search, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { BrandLogoMark } from "@/components/layout/brand-logo-mark";
 import { siteConfig, navigation } from "@/content";
 
 declare global {
@@ -312,17 +313,37 @@ export function Navbar() {
         )}
       >
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-          <nav className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <div className="w-32 h-16 lg:w-40 lg:h-20 overflow-hidden flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo/Anantavira%202.png"
-                  alt="Anantariva logo"
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                />
+          <nav className="flex h-16 items-center justify-between lg:h-20">
+            {/* Brand: logo mark + wordmark & tagline */}
+            <Link
+              href="/"
+              className="flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
+              aria-label={`${siteConfig.shortName} — ${siteConfig.tagline}`}
+            >
+              <div className="relative h-11 w-11 shrink-0 overflow-hidden sm:h-12 sm:w-12 lg:h-[3.35rem] lg:w-[3.35rem]">
+                <BrandLogoMark />
+              </div>
+              <div className="flex min-w-0 flex-col justify-center leading-tight">
+                <span className="truncate font-bold tracking-tight text-navy text-base sm:text-lg lg:text-xl">
+                  {siteConfig.shortName}
+                </span>
+                <p className="mt-0.5 max-w-[10.5rem] text-[10px] font-medium leading-snug text-gray-600 sm:max-w-[13rem] sm:text-[11px] lg:max-w-none lg:text-xs">
+                  {siteConfig.tagline.includes("Abundance") ? (
+                    <>
+                      {siteConfig.tagline.split("Abundance")[0]}
+                      <span className="relative inline-block">
+                        Abundance
+                        <span
+                          className="absolute -bottom-px left-0 right-0 h-[2px] rounded-full bg-red-600"
+                          aria-hidden
+                        />
+                      </span>
+                      {siteConfig.tagline.split("Abundance")[1]}
+                    </>
+                  ) : (
+                    siteConfig.tagline
+                  )}
+                </p>
               </div>
             </Link>
 

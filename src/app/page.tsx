@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Section, SectionHeader } from "@/components/layout";
 import { Icon, CTASection, FeatureCard } from "@/components/shared";
 import { homeContent, siteConfig, aboutContent } from "@/content";
+import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   return (
@@ -257,19 +258,22 @@ export default function HomePage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {aboutContent.experts.team.map((expert, index) => (
             <motion.div
-              key={`${expert.sector}-${index}`}
+              key={expert.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full overflow-hidden group hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 overflow-hidden">
+                <div className="relative h-[280px] w-full shrink-0 overflow-hidden bg-gray-100 sm:h-[300px] md:h-[320px]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={expert.image}
-                    alt={expert.sector}
-                    className="w-full h-full object-cover"
+                    alt={expert.name}
+                    className={cn(
+                      "h-full w-full object-cover object-top",
+                      "imageClassName" in expert ? (expert as { imageClassName?: string }).imageClassName : undefined
+                    )}
                     loading="lazy"
                   />
                 </div>

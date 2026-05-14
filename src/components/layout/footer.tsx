@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogoMark } from "@/components/layout/brand-logo-mark";
 import { siteConfig, navigation } from "@/content";
 import { Separator } from "@/components/ui/separator";
 
@@ -13,8 +14,8 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
-                <span className="text-navy font-bold text-xl">A</span>
+              <div className="h-10 w-10 shrink-0 overflow-hidden">
+                <BrandLogoMark />
               </div>
               <div>
                 <span className="font-semibold text-white text-lg tracking-tight">

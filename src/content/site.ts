@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Anantariva Global Private Limited",
   shortName: "Anantariva",
+  logoMark: "/logo/Anantavira.mp4",
   tagline: "Where Abundance Meets Vision",
   description:
     "Independent consulting and conformity-assessment firm delivering technical advisory, monitoring & evaluation, certification readiness, and sustainability solutions aligned with national and international standards.",
